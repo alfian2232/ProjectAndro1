@@ -1,0 +1,84 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:id="@+id/toolbar_like"
+        app:titleTextColor="#000"
+        android:elevation="4dp"
+        app:title="Search">
+
+        <ImageButton
+            android:id="@+id/btn_kembali_like"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="#fff"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:padding="10dp"
+            android:text="View Likes"
+            android:textColor="#000"
+            android:textSize="20dp"/>
+
+    </android.support.v7.widget.Toolbar>
+
+<!--    <android.support.v7.widget.CardView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:id="@+id/jumlahLike"-->
+<!--        android:layout_below="@id/toolbar_like"-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        android:layout_marginLeft="5dp"-->
+<!--        android:layout_marginRight="5dp"-->
+<!--        android:layout_marginBottom="5dp">-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="0"-->
+<!--            android:id="@+id/angkalike"-->
+<!--            android:textColor="#000"-->
+<!--            android:textSize="18dp"-->
+<!--            android:layout_marginLeft="125dp"-->
+<!--            android:layout_marginTop="10dp"/>-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Like Your Post"-->
+<!--            android:textColor="#000"-->
+<!--            android:textSize="18dp"-->
+<!--            android:layout_marginLeft="140dp"-->
+<!--            android:layout_marginTop="10dp"/>-->
+
+
+<!--    </android.support.v7.widget.CardView>-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:text="No Users Like Your Post"
+        android:textSize="15dp"
+        android:textAlignment="center"
+        android:paddingTop="15dp"
+        android:layout_below="@id/toolbar_like"
+        android:textColor="#34c6f2"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_items_like"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_list"
+        android:layout_below="@id/toolbar_like"/>
+
+</RelativeLayout>
