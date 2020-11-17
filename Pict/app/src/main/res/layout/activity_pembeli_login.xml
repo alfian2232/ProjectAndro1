@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pembeli.PembeliLoginActivity"
+    android:background="@color/ijo">
+
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="159dp"
+        android:layout_height="152dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/ic_splash_screen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Masuk Sebagai Pembeli"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/iv_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:id="@+id/tv_daftar"
+        android:textColor="@color/black"
+        android:fontFamily="@font/montserrat_bold"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginHorizontal="20dp"
+        android:orientation="vertical"
+        android:paddingTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_daftar"
+        android:background="@drawable/bg_white"
+        android:layout_marginTop="10dp">
+
+
+        --Text Username
+        <EditText
+            android:id="@+id/pembeli_username"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/ic_border_radius_for_edit_text"
+            android:drawableLeft="@drawable/ic_username"
+            android:hint="  Username"
+            android:inputType="textPersonName"
+            android:textSize="14dp" />
+
+        --Text Password
+        <EditText
+            android:id="@+id/pembeli_password"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/ic_border_radius_for_edit_text"
+            android:drawableLeft="@drawable/ic_password"
+            android:hint="  Password"
+            android:inputType="textPassword"
+            android:textSize="14dp" />
+
+
+        --Button Login
+        <Button
+            android:id="@+id/idButtonLogin"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/ic_border_radius_for_button"
+            android:text="Login"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:textSize="18sp" />
+
+        --Text Dont have an account
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="28dp"
+                android:elevation="4dp"
+                android:paddingTop="5dp"
+                android:text="Don't have an account?"
+                android:textSize="14dp"/>
+            <TextView
+                android:id="@+id/pembeli_txtsignup"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Sign Up"
+                android:textColor="@color/ijo"
+                android:textStyle="bold"
+                android:paddingTop="5dp"
+                android:layout_marginLeft="7dp"
+                android:textSize="14dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</android.support.constraint.ConstraintLayout>
