@@ -23,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/E:/APLIKASI%20MATKUL/Android%20STUDIO/plugins/android/lib/android.jar!/images/material/icons/materialicons/email/baseline_email_24.xml" />
+                                      <entry key="url" value="jar:file:/E:/APLIKASI%20MATKUL/Android%20STUDIO/plugins/android/lib/android.jar!/images/material/icons/materialicons/settings/baseline_settings_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -33,8 +33,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="c7cfcb" />
-                            <entry key="outputName" value="ic_email" />
+                            <entry key="color" value="838584" />
+                            <entry key="outputName" value="ic_setting" />
                             <entry key="sourceFile" value="E:\PROJEK AN\draw.svg" />
                           </map>
                         </option>
