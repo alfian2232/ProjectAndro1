@@ -26,7 +26,12 @@ public class HalamanUtamaActivity extends AppCompatActivity {
             }
         });
 
-        
+        cv_tambah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HalamanUtamaActivity.this,TambahProdukActivity.class));
+            }
+        });
 
     }
 }
