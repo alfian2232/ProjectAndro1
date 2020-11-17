@@ -15,7 +15,8 @@
         android:roundIcon="@drawable/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Petani.ProdukSayaActivity"></activity>
+        <activity android:name=".Petani.TambahProdukActivity"></activity>
+        <activity android:name=".Petani.ProdukSayaActivity" />
         <activity android:name=".Petani.HalamanUtamaActivity" />
         <activity android:name=".Petani.RegisterActivity" />
         <activity android:name=".GetStartedMasuk" />

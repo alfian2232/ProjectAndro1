@@ -2,6 +2,10 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginHorizontal="10dp"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="4dp"
+    android:layout_marginBottom="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.constraint.ConstraintLayout
@@ -19,7 +23,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/"
+            android:id="@+id/tv_produk"
             android:text="Produk 1"
             android:fontFamily="@font/montserrat_bold"
             android:textSize="16sp"
@@ -31,11 +35,54 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Stok : 1"
-            android:fontFamily="@font/montserrat_bold"
+            android:id="@+id/tv_stock"
+            android:fontFamily="@font/montserrat"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@id/iv_produk"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_produk"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kategori : Sayur Daun"
+            android:fontFamily="@font/montserrat"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/tv_stock"
+            app:layout_constraintTop_toBottomOf="@id/tv_produk"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"/>
+
+        <Button
+            android:layout_width="90dp"
+            android:layout_height="30dp"
+            android:id="@+id/btn_ubah"
+            android:background="@drawable/bg_button_ungu"
+            android:text="Ubah"
+            android:fontFamily="@font/montserrat_bold"
+            android:textSize="13sp"
+            android:textColor="@color/list_row_end_color"
+            android:layout_marginEnd="30dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_stock"
+            app:layout_constraintStart_toEndOf="@id/iv_produk"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"/>
+
+        <Button
+            android:layout_width="90dp"
+            android:layout_height="30dp"
+            android:id="@+id/btn_hapus"
+            android:background="@drawable/bg_button_ungu"
+            android:text="Hapus"
+            android:fontFamily="@font/montserrat_bold"
+            android:textSize="13sp"
+            android:textColor="@color/list_row_end_color"
+            android:layout_marginEnd="30dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_stock"
+            app:layout_constraintStart_toEndOf="@id/btn_ubah"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"/>
 
 
     </android.support.constraint.ConstraintLayout>
