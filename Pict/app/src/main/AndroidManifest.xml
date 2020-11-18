@@ -15,7 +15,10 @@
         android:roundIcon="@drawable/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".pembeli.PembeliMainActivity"></activity>
+        <activity android:name=".Petani.InformasiActivity"></activity>
+        <activity android:name=".Petani.KebijakanAppActivity" />
+        <activity android:name=".Petani.PengaturanAkunActivity" />
+        <activity android:name=".pembeli.PembeliMainActivity" />
         <activity android:name=".pembeli.PembeliRegisterActivity" />
         <activity android:name=".pembeli.PembeliLoginActivity" />
         <activity android:name=".Petani.TambahProdukActivity" />
