@@ -7,7 +7,7 @@
         android:icon="@drawable/ic_home"/>
     <item
         android:id="@+id/id_profile"
-        android:title="@string/profile"
+        android:title="Akun Saya"
         android:icon="@drawable/ic_profile"/>
 
 </menu>
