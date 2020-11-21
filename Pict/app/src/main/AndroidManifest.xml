@@ -15,7 +15,10 @@
         android:roundIcon="@drawable/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".pembeli.PasswordPembeliActivity"></activity>
+        <activity android:name=".Petani.TokoActivity"></activity>
+        <activity android:name=".pembeli.EtalaseActivity" />
+        <activity android:name=".pembeli.PembeliProfileActivity" />
+        <activity android:name=".pembeli.PasswordPembeliActivity" />
         <activity android:name=".pembeli.DetailProdukActivity" />
         <activity android:name=".pembeli.SearchPembeliActivity" />
         <activity android:name=".Petani.InformasiActivity" />

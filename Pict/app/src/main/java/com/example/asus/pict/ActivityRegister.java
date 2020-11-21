@@ -64,45 +64,45 @@ public class ActivityRegister extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 loading = ProgressDialog.show(mContext, null, "Harap Tunggu....", true, false);
-                requestRegister();
+//                requestRegister();
             }
 
-            private void requestRegister() {
-                mapiservice.registerRequest(etusername.getText().toString(),
-                        etemail.getText().toString(),etpassword.getText().toString()).enqueue(
-                        new Callback<ResponseBody>() {
-                            @Override
-                            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                                if(response.isSuccessful()){
-                                    Log.i("debug", "onResponse: BERHASIL");
-                                    loading.dismiss();
-                                    try {
-                                        JSONObject jsonObject = new JSONObject(response.body().string());
-                                        if (jsonObject.getString("error").equals("false")){
-                                            Toast.makeText(mContext, "Register Success", Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(mContext, Activity_Login.class));
-                                        }else {
-                                            String error_message = jsonObject.getString("error_msg");
-                                            Toast.makeText(mContext, error_message, Toast.LENGTH_SHORT).show();
-                                        }
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                                Log.e("debug", "onFailure: ERROR >" + t.getMessage());
-//                                Toast.makeText(mContext,"koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
-                                Toast.makeText(mContext, "Register Success", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(mContext, Activity_Login.class));
-                            }
-                        }
-                );
-            }
+//            private void requestRegister() {
+//                mapiservice.registerRequest(etusername.getText().toString(),
+//                        etemail.getText().toString(),etpassword.getText().toString()).enqueue(
+//                        new Callback<ResponseBody>() {
+//                            @Override
+//                            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+//                                if(response.isSuccessful()){
+//                                    Log.i("debug", "onResponse: BERHASIL");
+//                                    loading.dismiss();
+//                                    try {
+//                                        JSONObject jsonObject = new JSONObject(response.body().string());
+//                                        if (jsonObject.getString("error").equals("false")){
+//                                            Toast.makeText(mContext, "Register Success", Toast.LENGTH_SHORT).show();
+//                                            startActivity(new Intent(mContext, Activity_Login.class));
+//                                        }else {
+//                                            String error_message = jsonObject.getString("error_msg");
+//                                            Toast.makeText(mContext, error_message, Toast.LENGTH_SHORT).show();
+//                                        }
+//                                    } catch (JSONException e) {
+//                                        e.printStackTrace();
+//                                    } catch (IOException e) {
+//                                        e.printStackTrace();
+//                                    }
+//                                }
+//                            }
+//
+//                            @Override
+//                            public void onFailure(Call<ResponseBody> call, Throwable t) {
+//                                Log.e("debug", "onFailure: ERROR >" + t.getMessage());
+////                                Toast.makeText(mContext,"koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(mContext, "Register Success", Toast.LENGTH_SHORT).show();
+//                                startActivity(new Intent(mContext, Activity_Login.class));
+//                            }
+//                        }
+//                );
+//            }
         });
     }
 }

@@ -3,6 +3,8 @@ package com.example.asus.pict.apihelper;
 import com.example.asus.pict.ListPosting;
 import com.example.asus.pict.Request.SearchResponse;
 
+import org.json.JSONObject;
+
 import java.util.List;
 
 import okhttp3.ResponseBody;
@@ -26,7 +28,11 @@ public interface BaseApiService {
     @POST("register.php")
     Call<ResponseBody> registerRequest(@Field("username") String username,
                                        @Field("email") String email,
-                                       @Field("password") String password);
+                                       @Field("password") String password,
+                                       @Field("nama") String nama,
+                                       @Field("nomer") String nomer,
+                                       @Field("alamat") String alamat,
+                                       @Field("toko") JSONObject toko);
 
     // Fungsi ini untuk memanggil API http://192.168.43.102/pict/add_favorite.php
     @FormUrlEncoded

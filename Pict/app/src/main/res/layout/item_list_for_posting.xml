@@ -96,7 +96,7 @@
                         android:layout_height="25dp"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="8dp"
-                        android:background="@drawable/ic_edit2" />
+                        android:background="@drawable/ic_edit" />
                 </LinearLayout>
 
                 <TextView

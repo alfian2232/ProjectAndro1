@@ -123,20 +123,6 @@
                 android:hint="  Alamat"
                 android:textSize="14dp" />
 
-            <EditText
-                android:id="@+id/tv_nama_toko"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="12dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/ic_border_radius_for_edit_text"
-                android:drawableLeft="@drawable/ic_store"
-                android:inputType="text"
-                android:hint="  Nama Toko"
-                android:textSize="14dp" />
-
-
             --Button Login
             <Button
                 android:id="@+id/btn_daftar"
@@ -146,7 +132,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/ic_border_radius_for_button"
-                android:text="Daftar"
+                android:text="Berikutnya"
                 android:textAllCaps="false"
                 android:textColor="#fff"
                 android:textSize="18sp" />
