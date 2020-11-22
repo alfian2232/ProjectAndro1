@@ -3,6 +3,7 @@ package com.example.asus.pict.Adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +11,19 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.asus.pict.AdapterUserList;
 import com.example.asus.pict.R;
 import com.example.asus.pict.Request.GetProdukRes;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProdukPetaniAdapter extends RecyclerView.Adapter<ProdukPetaniAdapter.ProdukHolder>{
@@ -29,25 +37,27 @@ public class ProdukPetaniAdapter extends RecyclerView.Adapter<ProdukPetaniAdapte
 
     @NonNull
     @Override
-    public ProdukPetaniAdapter.ProdukHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ProdukHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mCtx);
         View view = inflater.inflate(R.layout.list_item_produk_saya, parent, false);
         return new ProdukHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProdukPetaniAdapter.ProdukHolder holder, int position) {
-        try {
-            holder.stok.setText("Stok : "+ListProduk.get(position).getProduk().getString("stok"));
-            holder.nama_produk.setText(ListProduk.get(position).getProduk().getString("nama_produk"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+    public void onBindViewHolder(@NonNull ProdukHolder holder, int position) {
+        JsonParser parser = new JsonParser();
+        JsonObject jsonObject = (JsonObject) parser.parse(ListProduk.get(position).getProduk());
+        String nama_produk = jsonObject.get("nama_produk").getAsString();
+        String stok = jsonObject.get("stok").toString();
+        holder.nama_produk.setText(nama_produk);
+        holder.stok.setText("Stok : "+stok);
+        holder.kategori.setText("Kategori : "+ListProduk.get(position).getKategori());
+        Glide.with(mCtx).load(ListProduk.get(position).getImg()).into(holder.iv_produk);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return ListProduk.size();
     }
 
     public class ProdukHolder extends RecyclerView.ViewHolder {

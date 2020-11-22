@@ -27,11 +27,13 @@ import android.widget.Toast;
 import com.example.asus.pict.MainActivity;
 import com.example.asus.pict.R;
 import com.example.asus.pict.Request.AddProdukRes;
+import com.example.asus.pict.Request.ProdukReq;
 import com.example.asus.pict.Request.RegResponse;
 import com.example.asus.pict.Request.RequestHandler;
 import com.example.asus.pict.activity_posting;
 import com.example.asus.pict.apihelper.BaseApiService;
 import com.example.asus.pict.apihelper.RetrofitClient;
+import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -118,23 +120,27 @@ public class TambahProdukActivity extends AppCompatActivity {
                     Toast.makeText(TambahProdukActivity.this, "Lengkapi Data Semua", Toast.LENGTH_SHORT).show();
                     pDialog.cancel();
                 }else{
-                    try {
-                        jsonObject.put("nama_produk",nama_produk);
-                        jsonObject.put("deskripsi", desc);
-                        jsonObject.put("harga",harga);
-                        jsonObject.put("berat",berat);
-                        jsonObject.put("stok",stok);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+//                    try {
+//                        jsonObject.put("nama_produk",nama_produk);
+//                        jsonObject.put("deskripsi", desc);
+//                        jsonObject.put("harga",harga);
+//                        jsonObject.put("berat",berat);
+//                        jsonObject.put("stok",stok);
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+                    ProdukReq produkReq = new ProdukReq(nama_produk,desc,harga,berat,stok);
+
                     BaseApiService service = RetrofitClient.getClient1().create(BaseApiService.class);
-                    Call<AddProdukRes> call = service.addprodukRequest(id_petani, jsonObject.toString(), kategori, f.getName(), image);
+                    Call<AddProdukRes> call = service.addprodukRequest(id_petani,new Gson().toJson(produkReq), kategori, f.getName(), image);
                     call.enqueue(new Callback<AddProdukRes>() {
                         @Override
                         public void onResponse(Call<AddProdukRes> call, Response<AddProdukRes> response) {
                             if(!response.body().getError()){
                                 Toast.makeText(TambahProdukActivity.this, "Berhasil Tambah Produk", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(TambahProdukActivity.this,ProdukSayaActivity.class));
+                                Intent intent = new Intent(TambahProdukActivity.this,ProdukSayaActivity.class);
+                                intent.putExtra("id_petani",id_petani);
+                                startActivity(intent);
                             }else{
                                 Toast.makeText(TambahProdukActivity.this, "Gagal", Toast.LENGTH_SHORT).show();
                             }

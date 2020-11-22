@@ -2,12 +2,16 @@ package com.example.asus.pict.apihelper;
 
 import com.example.asus.pict.ListPosting;
 import com.example.asus.pict.Request.AddProdukRes;
+import com.example.asus.pict.Request.GetProdukRes;
+import com.example.asus.pict.Request.ProdukReq;
 import com.example.asus.pict.Request.RegResponse;
 import com.example.asus.pict.Request.SearchResponse;
 
 import org.json.JSONObject;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -17,6 +21,9 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 
 public interface BaseApiService {
     // Fungsi ini untuk memanggil API http://192.168.43.102/pict/login.php
@@ -44,6 +51,18 @@ public interface BaseApiService {
                                         @Field("img") String img,
                                         @Field("foto_informasi") String foto_informasi);
 
+    @FormUrlEncoded
+    @POST("addproduk1.php")
+    Call<AddProdukRes> addprodukRequest1(@Field("id_petani") int id_petani,
+                                        @Field("nama_produk") String nama_produk,
+                                        @Field("deskripsi") String deskripsi,
+                                        @Field("harga") Float harga,
+                                        @Field("berat") Float berat,
+                                        @Field("stok") int stok,
+                                        @Field("kategori") String kategori,
+                                        @Field("img") String img,
+                                        @Field("foto_informasi") String foto_informasi);
+
     // Fungsi ini untuk memanggil API http://192.168.43.102/pict/add_favorite.php
     @FormUrlEncoded
     @POST("add_favorite.php")
@@ -63,7 +82,7 @@ public interface BaseApiService {
     Call<List<SearchResponse>>getAllDataSearch();
 
     @GET("list_posting.php")
-    Call<List<ListPosting>>getAllDataProduk();
+    Call<List<GetProdukRes>>getAllDataProdukByPetani(@Query("id_petani") int id);
 
     @FormUrlEncoded
     @POST("update_informasi.php")

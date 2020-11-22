@@ -14,7 +14,7 @@ public class GetProdukRes {
     private Integer idPetani;
     @SerializedName("produk")
     @Expose
-    private JSONObject produk;
+    private String produk;
     @SerializedName("kategori")
     @Expose
     private String kategori;
@@ -54,11 +54,27 @@ public class GetProdukRes {
         this.img = img;
     }
 
-    public JSONObject getProduk() {
+//    public JSONObject getProduk() {
+//        return produk;
+//    }
+//
+//    public void setProduk(JSONObject produk) {
+//        this.produk = produk;
+//    }
+
+    public String getProduk() {
         return produk;
     }
 
-    public void setProduk(JSONObject produk) {
+    public void setProduk(String produk) {
         this.produk = produk;
     }
+
+//    public ProdukReq getProduk() {
+//        return produk;
+//    }
+//
+//    public void setProduk(ProdukReq produk) {
+//        this.produk = produk;
+//    }
 }

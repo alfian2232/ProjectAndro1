@@ -71,7 +71,7 @@ public class Fragment_Search extends Fragment {
 
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(true);
-        loadList();
+//        loadList();
         return view;
     }
 
@@ -122,26 +122,26 @@ public class Fragment_Search extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    private void loadList() {
-        pDialog = new ProgressDialog(getContext());
-        pDialog.setCancelable(false);
-        pDialog.setMessage("Loading ...");
-
-        BaseApiService service = RetrofitClient.getClient().create(BaseApiService.class);
-        Call<List<ListPosting>> call = service.getAllDataProduk();
-        call.enqueue(new Callback<List<ListPosting>>() {
-            @Override
-            public void onResponse(Call<List<ListPosting>> call, Response<List<ListPosting>> response) {
-                SearchRes = response.body();
-            }
-
-            @Override
-            public void onFailure(Call<List<ListPosting>> call, Throwable t) {
-
-            }
-        });
-
-    }
+//    private void loadList() {
+//        pDialog = new ProgressDialog(getContext());
+//        pDialog.setCancelable(false);
+//        pDialog.setMessage("Loading ...");
+//
+//        BaseApiService service = RetrofitClient.getClient().create(BaseApiService.class);
+//        Call<List<ListPosting>> call = service.getAllDataProduk();
+//        call.enqueue(new Callback<List<ListPosting>>() {
+//            @Override
+//            public void onResponse(Call<List<ListPosting>> call, Response<List<ListPosting>> response) {
+//                SearchRes = response.body();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<ListPosting>> call, Throwable t) {
+//
+//            }
+//        });
+//
+//    }
 
     private void showDialog() {
         if (!pDialog.isShowing())
