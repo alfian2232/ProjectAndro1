@@ -336,6 +336,7 @@ public class activity_posting extends AppCompatActivity {
     }
 
     private void setPermission() {
+
         byteArrayOutputStream = new ByteArrayOutputStream();
 
         if (imageUri != null) {

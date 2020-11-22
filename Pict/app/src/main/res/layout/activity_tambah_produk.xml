@@ -24,97 +24,110 @@
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
-    <LinearLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/bg_white"
-        android:layout_marginHorizontal="10dp"
-        android:orientation="vertical"
-        android:paddingVertical="20dp">
+        android:layout_height="match_parent">
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/ll_image"
-            android:layout_gravity="center">
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:id="@+id/iv_produk"
-                android:src="@drawable/ic_tambah"/>
-            <TextView
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_white"
+            android:layout_marginHorizontal="10dp"
+            android:orientation="vertical"
+            android:paddingVertical="20dp">
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tv_poto"
-                android:text="Foto Produk"
-                android:textSize="30sp"
-                android:fontFamily="@font/montserrat_bold"
-                android:layout_gravity="center"/>
-        </LinearLayout>
-        <EditText
-            android:id="@+id/tv_nama"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginHorizontal="10dp"
-            android:background="@drawable/ic_border_radius_for_edit_text"
-            android:hint="  Nama Produk "
-            android:inputType="text"
-            android:textSize="14dp"
-            android:layout_marginTop="10dp"/>
-        <EditText
-            android:id="@+id/tv_deskripsi"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginHorizontal="10dp"
-            android:maxLines="7"
-            android:lines="7"
-            android:textAlignment="viewStart"
-            android:background="@drawable/ic_border_radius_for_edit_text"
-            android:hint=" Deskripsi"
-            android:inputType="textMultiLine"
-            android:gravity="top|start"
-            android:textSize="14dp"
-            android:layout_marginTop="10dp"/>
-        <EditText
-            android:id="@+id/spin_kategori"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="Kategori Sayur"
-            android:layout_marginHorizontal="10dp"
-            android:background="@drawable/ic_border_radius_for_edit_text"
-            android:inputType="text"
-            android:layout_marginTop="10dp"/>
+                android:id="@+id/ll_image"
+                android:layout_gravity="center">
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/iv_produk"
+                    android:src="@drawable/ic_tambah"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_poto"
+                    android:text="Foto Produk"
+                    android:textSize="30sp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+            <EditText
+                android:id="@+id/tv_nama"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/ic_border_radius_for_edit_text"
+                android:hint="  Nama Produk "
+                android:inputType="text"
+                android:textSize="14dp"
+                android:layout_marginTop="10dp"/>
+            <EditText
+                android:id="@+id/tv_deskripsi"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginHorizontal="10dp"
+                android:maxLines="7"
+                android:lines="7"
+                android:textAlignment="viewStart"
+                android:background="@drawable/ic_border_radius_for_edit_text"
+                android:hint=" Deskripsi"
+                android:inputType="textMultiLine"
+                android:gravity="top|start"
+                android:textSize="14dp"
+                android:layout_marginTop="10dp"/>
+            <EditText
+                android:id="@+id/spin_kategori"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Kategori Sayur"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/ic_border_radius_for_edit_text"
+                android:inputType="text"
+                android:layout_marginTop="10dp"/>
 
-        <EditText
-            android:id="@+id/tv_harga"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginHorizontal="10dp"
-            android:background="@drawable/ic_border_radius_for_edit_text"
-            android:hint=" Harga"
-            android:inputType="number"
-            android:layout_marginTop="10dp"/>
-        <EditText
-            android:id="@+id/tv_berat"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginHorizontal="10dp"
-            android:background="@drawable/ic_border_radius_for_edit_text"
-            android:hint=" Berat (gram)"
-            android:inputType="number"
-            android:layout_marginTop="10dp"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:id="@+id/btn_simpan"
-            android:background="@drawable/bg_button_ungu"
-            android:text="Simpan"
-            android:fontFamily="@font/montserrat_bold"
-            android:textSize="18sp"
-            android:layout_marginHorizontal="20dp"
-            android:textColor="@color/list_row_end_color"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"/>
-    </LinearLayout>
+            <EditText
+                android:id="@+id/tv_harga"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/ic_border_radius_for_edit_text"
+                android:hint=" Harga"
+                android:inputType="number"
+                android:layout_marginTop="10dp"/>
+            <EditText
+                android:id="@+id/tv_berat"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/ic_border_radius_for_edit_text"
+                android:hint=" Berat (gram)"
+                android:inputType="number"
+                android:layout_marginTop="10dp"/>
+            <EditText
+                android:id="@+id/tv_stok"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/ic_border_radius_for_edit_text"
+                android:hint=" Stok"
+                android:inputType="number"
+                android:layout_marginTop="10dp"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/btn_simpan"
+                android:background="@drawable/bg_button_ungu"
+                android:text="Simpan"
+                android:fontFamily="@font/montserrat_bold"
+                android:textSize="18sp"
+                android:layout_marginHorizontal="20dp"
+                android:textColor="@color/list_row_end_color"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"/>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>

@@ -1,14 +1,19 @@
 package com.example.asus.pict.Petani;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,19 +24,32 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.asus.pict.MainActivity;
 import com.example.asus.pict.R;
+import com.example.asus.pict.Request.RegResponse;
+import com.example.asus.pict.Request.RequestHandler;
 import com.example.asus.pict.activity_posting;
+import com.example.asus.pict.apihelper.BaseApiService;
+import com.example.asus.pict.apihelper.RetrofitClient;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class TambahProdukActivity extends AppCompatActivity {
 
-    EditText spin_kategori,et_produk,et_desc,et_harga,et_berat;
+    EditText spin_kategori,et_produk,et_desc,et_harga,et_berat,et_stok;
     Toolbar toolbar;
     LinearLayout btn_image;
     final int PICK_IMAGE = 100;
@@ -41,7 +59,11 @@ public class TambahProdukActivity extends AppCompatActivity {
     TextView tv_poto;
     String nama_produk,desc,kategori,image;
     float harga,berat;
+    int stok;
+    int id_petani;
+    private File f;
     Button btn_simpan;
+    JSONObject jsonObject = new JSONObject();
     ProgressDialog pDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +78,12 @@ public class TambahProdukActivity extends AppCompatActivity {
         et_desc = findViewById(R.id.tv_deskripsi);
         et_harga = findViewById(R.id.tv_harga);
         et_berat = findViewById(R.id.tv_berat);
+        et_stok = findViewById(R.id.tv_stok);
         btn_simpan = findViewById(R.id.btn_simpan);
+
+        SharedPreferences sharedPreferences;
+        sharedPreferences = getSharedPreferences("data_user", Context.MODE_PRIVATE);
+        id_petani = sharedPreferences.getInt("id", 0);
 
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -83,29 +110,86 @@ public class TambahProdukActivity extends AppCompatActivity {
                 kategori = spin_kategori.getText().toString();
                 harga = Float.parseFloat(et_harga.getText().toString());
                 berat = Float.parseFloat(et_berat.getText().toString());
+                stok = Integer.parseInt(et_stok.getText().toString());
 
-                if (nama_produk.isEmpty() || desc.isEmpty() || kategori.isEmpty() || harga == 0.0 || berat == 0.0 || image==null){
+                if (nama_produk.isEmpty() || desc.isEmpty() || kategori.isEmpty() || harga == 0.0 || berat == 0.0 || stok == 0 || image==null){
                     Toast.makeText(TambahProdukActivity.this, "Lengkapi Data Semua", Toast.LENGTH_SHORT).show();
                     pDialog.cancel();
                 }else{
+                    try {
+                        jsonObject.put("nama_produk",nama_produk);
+                        jsonObject.put("deskripsi", desc);
+                        jsonObject.put("harga",harga);
+                        jsonObject.put("berat",berat);
+                        jsonObject.put("stok",stok);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
+                    BaseApiService service = RetrofitClient.getClient1().create(BaseApiService.class);
+                    Call<RegResponse> call = service.addprodukRequest(id_petani, jsonObject.toString(), kategori, f.getName(), image);
+                    call.enqueue(new Callback<RegResponse>() {
+                        @Override
+                        public void onResponse(Call<RegResponse> call, Response<RegResponse> response) {
+                            if (!response.body().getError()){
+                                Toast.makeText(TambahProdukActivity.this, "Registrasi Berhasil", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(TambahProdukActivity.this, ProdukSayaActivity.class));
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<RegResponse> call, Throwable t) {
+
+                        }
+                    });
                 }
             }
         });
 
     }
 
+    public String getPath(Uri uri) {
+        String[] projection = {MediaStore.Images.Media.DATA};
+        Cursor cursor = TambahProdukActivity.this.managedQuery(uri, projection, null, null, null);
+        if (cursor != null) {
+            int column_index = cursor
+                    .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            return cursor.getString(column_index);
+        } else
+            return null;
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
-
+//            if (data != null) {
+//                contentUri = data.getData();
+//
+//                try {
+//                    imageUri = MediaStore.Images.Media.getBitmap(Objects.requireNonNull(TambahProdukActivity.this).getContentResolver(), contentUri);
+//                    String selectedPath = getPath(contentUri);
+//                    iv_produk.setImageBitmap(imageUri);
+//                    iv_produk.setVisibility(View.VISIBLE);
+//                    f = new File(selectedPath);
+//                    imageUri.compress(Bitmap.CompressFormat.JPEG, 40, byteArrayOutputStream);
+//                    byteArray = byteArrayOutputStream.toByteArray();
+//                    ConvertImage = Base64.encodeToString(byteArray, Base64.DEFAULT);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                    Toast.makeText(TambahProdukActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
+//                }
+//
+//            }
             if (data != null) {
                 contentUri = data.getData();
                 try {
                     imageUri = MediaStore.Images.Media.getBitmap(Objects.requireNonNull(TambahProdukActivity.this).getContentResolver(), contentUri);
+                    String selectedPath = getPath(contentUri);
                     iv_produk.setImageBitmap(imageUri);
                     tv_poto.setVisibility(View.GONE);
+                    f = new File(selectedPath);
                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                     imageUri.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
                     byte[] byteArray = byteArrayOutputStream .toByteArray();
