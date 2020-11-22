@@ -318,7 +318,7 @@ public class activity_posting extends AppCompatActivity {
     private Bitmap imageUri;
     SharedPreferences sharedPreferences;
     private Uri contentUri;
-    private static final int PICK_IMAGE = 100;
+        private static final int PICK_IMAGE = 100;
     private ByteArrayOutputStream byteArrayOutputStream;
     private byte[] byteArray;
     private String ConvertImage;
