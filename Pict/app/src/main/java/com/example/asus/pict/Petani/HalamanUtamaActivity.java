@@ -33,5 +33,12 @@ public class HalamanUtamaActivity extends AppCompatActivity {
             }
         });
 
+        cv_pengaturan_akun.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HalamanUtamaActivity.this,PengaturanAkunActivity.class));
+            }
+        });
+
     }
 }

@@ -1,12 +1,15 @@
 package com.example.asus.pict.Petani;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.asus.pict.GetStartedFirst;
 import com.example.asus.pict.R;
 
 public class PengaturanAkunActivity extends AppCompatActivity {
@@ -32,7 +35,14 @@ public class PengaturanAkunActivity extends AppCompatActivity {
         btn_keluar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences sharedPreferences = getSharedPreferences("data_user", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt("id", 0);
+                editor.putString("role", null);
+                editor.putBoolean("sudahLogin", false);
+                editor.apply();
                 finish();
+                startActivity(new Intent(PengaturanAkunActivity.this, GetStartedFirst.class));
             }
         });
 

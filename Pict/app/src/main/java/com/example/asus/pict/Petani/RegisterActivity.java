@@ -11,29 +11,40 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.asus.pict.R;
-import com.example.asus.pict.Request.RegReq;
 
 public class RegisterActivity extends AppCompatActivity {
     Button btn_daftar;
     TextView idSignin;
     EditText et_nama, et_nomer, et_email, et_username, et_alamat, et_password;
+    String nama, nomer, email, user, alamat, password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register2);
         initComponent();
+        nama=et_nama.getText().toString();
+        nomer=et_nomer.getText().toString();
+        email=et_email.getText().toString();
+        user=et_username.getText().toString();
+        alamat=et_alamat.getText().toString();
+        password=et_password.getText().toString();
         btn_daftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (et_password.getText().equals("") || et_alamat.getText().equals("") || et_username.getText().equals("") ||
-                        et_email.getText().equals("") || et_nomer.getText().equals("") || et_nama.getText().equals("")){
+                if (nama.isEmpty() || nomer.isEmpty() ||email.isEmpty() ||user.isEmpty() ||alamat.isEmpty() ||password.isEmpty()){
                     Toast.makeText(RegisterActivity.this, "Lengkapi Data Terlebih Dahulu", Toast.LENGTH_SHORT).show();
                 } else {
-                    RegReq regReq = new RegReq(et_nama.getText().toString(),et_nomer.getText().toString(),et_email.getText().toString(),
-                            et_username.getText().toString(),et_alamat.getText().toString(),et_password.getText().toString());
                     Intent intent = new Intent(RegisterActivity.this,TokoActivity.class);
-                    intent.putExtra("sds",regReq);
-                    Log.i("asd",""+et_nama.getText());
+                    Bundle bundle = new Bundle();
+                    bundle.putString("nama", nama);
+                    bundle.putString("nomer", nomer);
+                    bundle.putString("email", email);
+                    bundle.putString("user", user);
+                    bundle.putString("alamat", alamat);
+                    bundle.putString("password", password);
+
+                    intent.putExtras(bundle);
+//                    Log.i("asd",""+et_nama.getText());
                     startActivity(intent);
                 }
             }

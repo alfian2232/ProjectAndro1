@@ -21,7 +21,7 @@ public interface BaseApiService {
     // Fungsi ini untuk memanggil API http://192.168.43.102/pict/login.php
     @FormUrlEncoded
     @POST("login.php")
-    Call<ResponseBody> loginRequest(@Field("username") String username,
+    Call<RegResponse> loginRequest(@Field("username") String username,
                                     @Field("password") String password);
 
     // Fungsi ini untuk memanggil API http://192.168.43.102/pict/register.php

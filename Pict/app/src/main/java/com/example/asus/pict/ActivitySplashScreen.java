@@ -30,7 +30,6 @@ public class ActivitySplashScreen extends AppCompatActivity {
                         startActivity(home);
                         finish();
                     } else {
-
                         Intent home = new Intent(ActivitySplashScreen.this, PembeliMainActivity.class);
                         startActivity(home);
                         finish();

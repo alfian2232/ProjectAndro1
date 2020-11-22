@@ -96,7 +96,7 @@ public class Activity_Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
-                requestLogin();
+//                requestLogin();
             }
         });
 
@@ -109,66 +109,66 @@ public class Activity_Login extends AppCompatActivity {
     }
 
 
-        private void requestLogin(){
-            mApiService.loginRequest(etUsername.getText().toString(), etPassword.getText().toString())
-                    .enqueue(new Callback<ResponseBody>() {
-                        @Override
-                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                            if (response.isSuccessful()){
-                                loading.dismiss();
-                                try {
-                                    JSONObject jsonRESULTS = new JSONObject(response.body().string());
-                                    if (jsonRESULTS.getString("error").equals("false")){
-                                        // Jika login berhasil maka data nama yang ada di response API
-                                        // akan diparsing ke activity selanjutnya.
-                                        Toast.makeText(mContext, "BERHASIL LOGIN", Toast.LENGTH_SHORT).show();
-                                        String id = jsonRESULTS.getString("uid");
-                                        Log.d("debug","OnResponse"+id);
-
-
-                                        String nama = jsonRESULTS.getJSONObject("user").getString("username");
-                                        String email = jsonRESULTS.getJSONObject("user").getString("email");
-                                        String gambar = jsonRESULTS.getJSONObject("user").getString("image");
-                                        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-
-                                        editor.putString("id", id);
-                                        editor.putString("nama",nama);
-                                        editor.putString("email",email);
-                                        editor.putString("gambar",gambar);
-                                        editor.putBoolean("sudahLogin", true);
-                                        editor.apply();
-
-                                        Intent intent = new Intent(Activity_Login.this, MainActivity.class);
-                                        intent.putExtra("result_nama", nama);
-                                        startActivity(intent);
-                                        finish();
-                                    } else {
-                                        // Jika login gagal
-                                        String error_message = jsonRESULTS.getString("error_msg");
-                                        Toast.makeText(mContext, error_message, Toast.LENGTH_SHORT).show();
-                                    }
-                                } catch (JSONException e) {
-                                    Log.e("debug","OnResponse"+ e.getMessage());
-                                    e.printStackTrace();
-                                } catch (IOException e) {
-                                    Log.e("debug","OnResponse"+ e.getMessage());
-                                    e.printStackTrace();
-                                }
-                            } else {
-                                loading.dismiss();
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<ResponseBody> call, Throwable t) {
-                            Log.e("debug", "onFailure: ERROR > " + t.toString());
-                            loading.dismiss();
-
-                        }
-
-                    });
-        }
+//        private void requestLogin(){
+//            mApiService.loginRequest(etUsername.getText().toString(), etPassword.getText().toString())
+//                    .enqueue(new Callback<ResponseBody>() {
+//                        @Override
+//                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+//                            if (response.isSuccessful()){
+//                                loading.dismiss();
+//                                try {
+//                                    JSONObject jsonRESULTS = new JSONObject(response.body().string());
+//                                    if (jsonRESULTS.getString("error").equals("false")){
+//                                        // Jika login berhasil maka data nama yang ada di response API
+//                                        // akan diparsing ke activity selanjutnya.
+//                                        Toast.makeText(mContext, "BERHASIL LOGIN", Toast.LENGTH_SHORT).show();
+//                                        String id = jsonRESULTS.getString("uid");
+//                                        Log.d("debug","OnResponse"+id);
+//
+//
+//                                        String nama = jsonRESULTS.getJSONObject("user").getString("username");
+//                                        String email = jsonRESULTS.getJSONObject("user").getString("email");
+//                                        String gambar = jsonRESULTS.getJSONObject("user").getString("image");
+//                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+//
+//
+//                                        editor.putString("id", id);
+//                                        editor.putString("nama",nama);
+//                                        editor.putString("email",email);
+//                                        editor.putString("gambar",gambar);
+//                                        editor.putBoolean("sudahLogin", true);
+//                                        editor.apply();
+//
+//                                        Intent intent = new Intent(Activity_Login.this, MainActivity.class);
+//                                        intent.putExtra("result_nama", nama);
+//                                        startActivity(intent);
+//                                        finish();
+//                                    } else {
+//                                        // Jika login gagal
+//                                        String error_message = jsonRESULTS.getString("error_msg");
+//                                        Toast.makeText(mContext, error_message, Toast.LENGTH_SHORT).show();
+//                                    }
+//                                } catch (JSONException e) {
+//                                    Log.e("debug","OnResponse"+ e.getMessage());
+//                                    e.printStackTrace();
+//                                } catch (IOException e) {
+//                                    Log.e("debug","OnResponse"+ e.getMessage());
+//                                    e.printStackTrace();
+//                                }
+//                            } else {
+//                                loading.dismiss();
+//                            }
+//                        }
+//
+//                        @Override
+//                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+//                            Log.e("debug", "onFailure: ERROR > " + t.toString());
+//                            loading.dismiss();
+//
+//                        }
+//
+//                    });
+//        }
 
     }
 

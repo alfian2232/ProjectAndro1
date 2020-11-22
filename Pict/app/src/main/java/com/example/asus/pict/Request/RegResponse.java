@@ -10,6 +10,9 @@ public class RegResponse {
     @SerializedName("user")
     @Expose
     private User user;
+    @SerializedName("uid")
+    @Expose
+    private Integer uid;
 
     public Boolean getError() {
         return error;
@@ -25,5 +28,13 @@ public class RegResponse {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Integer getUid() {
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
     }
 }

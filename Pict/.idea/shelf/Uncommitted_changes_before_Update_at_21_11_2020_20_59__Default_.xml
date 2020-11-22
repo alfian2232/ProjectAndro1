@@ -1,0 +1,19 @@
+<changelist name="Uncommitted_changes_before_Update_at_21_11_2020_20_59_[Default]" date="1605967173756" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_11_2020_20_59_[Default]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 21/11/2020 20:59 [Default]" />
+  <binary>
+    <option name="BEFORE_PATH" value=".gradle/4.4/fileHashes/fileHashes.lock" />
+    <option name="AFTER_PATH" value=".gradle/4.4/fileHashes/fileHashes.lock" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_11_2020_20_59_[Default]/fileHashes.lock" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value=".idea/caches/build_file_checksums.ser" />
+    <option name="AFTER_PATH" value=".idea/caches/build_file_checksums.ser" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_11_2020_20_59_[Default]/build_file_checksums.ser" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value=".gradle/4.4/fileHashes/fileHashes.bin" />
+    <option name="AFTER_PATH" value=".gradle/4.4/fileHashes/fileHashes.bin" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_11_2020_20_59_[Default]/fileHashes.bin" />
+  </binary>
+</changelist>

@@ -1,5 +1,7 @@
 package com.example.asus.pict.Petani;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,8 +14,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.asus.pict.R;
-import com.example.asus.pict.Request.RegReq;
 import com.example.asus.pict.Request.RegResponse;
+import com.example.asus.pict.activity_update;
 import com.example.asus.pict.apihelper.BaseApiService;
 import com.example.asus.pict.apihelper.RetrofitClient;
 import com.example.asus.pict.apihelper.UtilsApi;
@@ -34,11 +36,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class TokoActivity extends AppCompatActivity {
     EditText et_namatoko, et_deskripsi;
     Button btn_daftar;
-    Bundle bundle;
     String nama, nomer, email, user, alamat, password;
     BaseApiService mapiservice;
     JSONObject jsonObject = new JSONObject();
     SharedPreferences sharedPreferences;
+    ProgressDialog pDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,32 +58,46 @@ public class TokoActivity extends AppCompatActivity {
         btn_daftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pDialog = new ProgressDialog(TokoActivity.this);
+                pDialog.setCancelable(false);
+                pDialog.setMessage("Loading ...");
+                pDialog.show();
                 if (et_namatoko.getText().equals("") || et_deskripsi.getText().equals("")){
                     Toast.makeText(TokoActivity.this, "Lengkapi Data Terlebih Dahulu", Toast.LENGTH_SHORT).show();
+                    pDialog.cancel();
                 } else {
-                    RegReq regReq = getIntent().getExtras().getParcelable("sds");
-                    Log.i("abc", ""+regReq.getNama());
+                    Bundle bundle = getIntent().getExtras();
+                    nama = bundle.getString("nama");
+                    nomer = bundle.getString("nomer");
+                    email = bundle.getString("email");
+                    user = bundle.getString("user");
+                    alamat = bundle.getString("alamat");
+                    password = bundle.getString("password");
+                    Log.i("abc", ""+alamat);
                     Log.i("aaaa", ""+jsonObject.toString());
                     BaseApiService service = RetrofitClient.getClient1().create(BaseApiService.class);
-                    Call<RegResponse> call = service.registerRequest(user,email,password, "namas",nomer,alamat,"jsonObject.toString()");
+                    Call<RegResponse> call = service.registerRequest(user,email,password, nama,nomer,alamat,jsonObject.toString());
                     call.enqueue(new Callback<RegResponse>() {
                         @Override
                         public void onResponse(Call<RegResponse> call, Response<RegResponse> response) {
                             if(!response.body().getError()){
                                 Toast.makeText(TokoActivity.this, "Registrasi Berhasil", Toast.LENGTH_SHORT).show();
-//                                SharedPreferences.Editor editor = sharedPreferences.edit();
-//                                editor.putString("user", user);
-//                                editor.putString("role", "petani");
-//                                editor.putBoolean("sudahLogin", true);
-//                                editor.apply();
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putInt("id", response.body().getUid());
+                                editor.putString("role", "petani");
+                                editor.putBoolean("sudahLogin", true);
+                                editor.apply();
+                                startActivity(new Intent(TokoActivity.this, HalamanUtamaActivity.class));
                             }else{
                                 Toast.makeText(TokoActivity.this, "Registrasi Gagal", Toast.LENGTH_SHORT).show();
                             }
+                            pDialog.cancel();
                         }
 
                         @Override
                         public void onFailure(Call<RegResponse> call, Throwable t) {
                             Toast.makeText(TokoActivity.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                            pDialog.cancel();
                         }
                     });
                 }
