@@ -74,6 +74,20 @@ public interface BaseApiService {
                                     @Field("harga") String harga,
                                     @Field("id") int id);
 
+    @FormUrlEncoded
+    @POST("loginpembeli.php")
+    Call<RegResponse> loginReqPembeli(@Field("username") String username,
+                                   @Field("password") String password);
+
+    // Fungsi ini untuk memanggil API http://192.168.43.102/pict/register.php
+    @FormUrlEncoded
+    @POST("registerpembeli.php")
+    Call<RegResponse> regisReqPembeli(@Field("username") String username,
+                                      @Field("email") String email,
+                                      @Field("password") String password,
+                                      @Field("nama") String nama,
+                                      @Field("nomer") String nomer,
+                                      @Field("alamat") String alamat);
 
     BaseApiService create(Class<BaseApiService> baseApiServiceClass);
 }
