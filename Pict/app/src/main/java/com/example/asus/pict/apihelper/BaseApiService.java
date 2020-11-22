@@ -1,6 +1,7 @@
 package com.example.asus.pict.apihelper;
 
 import com.example.asus.pict.ListPosting;
+import com.example.asus.pict.Request.AddProdukRes;
 import com.example.asus.pict.Request.RegResponse;
 import com.example.asus.pict.Request.SearchResponse;
 
@@ -35,12 +36,13 @@ public interface BaseApiService {
                                       @Field("alamat") String alamat,
                                       @Field("toko") String toko);
 
+    @FormUrlEncoded
     @POST("addproduk.php")
-    Call<RegResponse> addprodukRequest(@Field("id_petani") int id_petani,
-                                      @Field("produk") String produk,
-                                      @Field("kategori") String kategori,
-                                      @Field("img") String img,
-                                      @Field("foto_informasi") String foto_informasi);
+    Call<AddProdukRes> addprodukRequest(@Field("id_petani") int id_petani,
+                                        @Field("produk") String produk,
+                                        @Field("kategori") String kategori,
+                                        @Field("img") String img,
+                                        @Field("foto_informasi") String foto_informasi);
 
     // Fungsi ini untuk memanggil API http://192.168.43.102/pict/add_favorite.php
     @FormUrlEncoded

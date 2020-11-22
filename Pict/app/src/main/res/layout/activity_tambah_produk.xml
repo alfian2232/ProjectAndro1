@@ -63,7 +63,8 @@
                 android:hint="  Nama Produk "
                 android:inputType="text"
                 android:textSize="14dp"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp"
+                android:padding="10dp"/>
             <EditText
                 android:id="@+id/tv_deskripsi"
                 android:layout_width="match_parent"
@@ -77,7 +78,8 @@
                 android:inputType="textMultiLine"
                 android:gravity="top|start"
                 android:textSize="14dp"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp"
+                android:padding="10dp"/>
             <EditText
                 android:id="@+id/spin_kategori"
                 android:layout_width="match_parent"
@@ -95,8 +97,9 @@
                 android:layout_marginHorizontal="10dp"
                 android:background="@drawable/ic_border_radius_for_edit_text"
                 android:hint=" Harga"
-                android:inputType="number"
-                android:layout_marginTop="10dp"/>
+                android:inputType="numberDecimal"
+                android:layout_marginTop="10dp"
+                android:padding="10dp"/>
             <EditText
                 android:id="@+id/tv_berat"
                 android:layout_width="match_parent"
@@ -104,7 +107,7 @@
                 android:layout_marginHorizontal="10dp"
                 android:background="@drawable/ic_border_radius_for_edit_text"
                 android:hint=" Berat (gram)"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:layout_marginTop="10dp"/>
             <EditText
                 android:id="@+id/tv_stok"
@@ -114,7 +117,8 @@
                 android:background="@drawable/ic_border_radius_for_edit_text"
                 android:hint=" Stok"
                 android:inputType="number"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp"
+                android:padding="10dp"/>
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
