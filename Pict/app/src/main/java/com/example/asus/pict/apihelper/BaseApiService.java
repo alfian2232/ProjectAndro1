@@ -2,6 +2,8 @@ package com.example.asus.pict.apihelper;
 
 import com.example.asus.pict.ListPosting;
 import com.example.asus.pict.Request.AddProdukRes;
+import com.example.asus.pict.Request.EtalaseRes;
+import com.example.asus.pict.Request.GetProdukRes;
 import com.example.asus.pict.Request.RegResponse;
 import com.example.asus.pict.Request.SearchResponse;
 

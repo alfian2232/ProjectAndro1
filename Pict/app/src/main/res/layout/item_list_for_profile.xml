@@ -8,11 +8,13 @@
     android:layout_margin="10dp"
     app:cardElevation="5dp"
     android:padding="2dp"
-    android:id="@+id/cardView_posting">
+    android:id="@+id/cardView_posting"
+    app:cardCornerRadius="5dp"
+    android:elevation="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="230dp"
+        android:layout_height="wrap_content"
         android:layout_margin="6dp"
         android:clipToPadding="false"
         android:clickable="true"
@@ -21,7 +23,7 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="165dp"
+            android:layout_height="100dp"
             android:src="#6B6A6A"
             android:padding="2dp"
             android:id="@+id/img_postingan_user"

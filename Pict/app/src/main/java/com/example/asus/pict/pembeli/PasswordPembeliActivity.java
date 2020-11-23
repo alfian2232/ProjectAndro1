@@ -1,5 +1,6 @@
 package com.example.asus.pict.pembeli;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -39,13 +40,17 @@ public class PasswordPembeliActivity extends AppCompatActivity {
         btn_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final ProgressDialog pDialog = new ProgressDialog(PasswordPembeliActivity.this);
+                pDialog.setCancelable(false);
+                pDialog.setMessage("Loading ...");
+                pDialog.show();
                 String passlama = et_passlama.getText().toString();
                 String passbaru = et_passbaru.getText().toString();
                 String konf = et_konfir.getText().toString();
                 if (passlama.isEmpty() || passbaru.isEmpty() || konf.isEmpty()){
                     Toast.makeText(PasswordPembeliActivity.this, "Lengkapi Data Terlebih Dahulu", Toast.LENGTH_SHORT).show();
                 } else {
-                    if (passbaru != konf){
+                    if (!passbaru.equals(konf)){
                         Toast.makeText(PasswordPembeliActivity.this, "Password Tidak Sama", Toast.LENGTH_SHORT).show();
                         et_konfir.requestFocus();
                     } else {
@@ -55,16 +60,18 @@ public class PasswordPembeliActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<AddProdukRes> call, Response<AddProdukRes> response) {
                                 if (!response.body().getError()){
-                                    Toast.makeText(PasswordPembeliActivity.this, ""+response.body().getPesan(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(PasswordPembeliActivity.this, "Ganti Password Berhasil", Toast.LENGTH_SHORT).show();
                                     finish();
                                 } else {
-                                    Toast.makeText(PasswordPembeliActivity.this, ""+response.body().getPesan(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(PasswordPembeliActivity.this, "Gagal", Toast.LENGTH_SHORT).show();
                                 }
+                                pDialog.cancel();
                             }
 
                             @Override
                             public void onFailure(Call<AddProdukRes> call, Throwable t) {
                                 Toast.makeText(PasswordPembeliActivity.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                                pDialog.cancel();
                             }
                         });
                     }

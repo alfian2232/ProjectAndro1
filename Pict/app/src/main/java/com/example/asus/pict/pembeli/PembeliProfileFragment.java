@@ -17,7 +17,8 @@ import com.example.asus.pict.GetStartedFirst;
 import com.example.asus.pict.R;
 
 public class PembeliProfileFragment extends Fragment {
-    Button btn_logout, btn_ubahprofil;
+    Button btn_logout;
+    LinearLayout btn_ubahprofil;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

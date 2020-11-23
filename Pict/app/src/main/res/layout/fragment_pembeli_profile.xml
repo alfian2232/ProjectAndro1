@@ -7,20 +7,19 @@
     android:orientation="vertical"
     android:background="@color/ijo"
     tools:context=".pembeli.PembeliProfileFragment">
-    <ImageView
-        android:id="@+id/img_pembeli"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:src="@drawable/icon_store"
-        android:layout_gravity="center"
-        android:background="@color/list_row_end_color"/>
-    <TextView
-        android:id="@+id/user_pembeli"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Produk Saya"
-        android:layout_marginHorizontal="15dp"
-        android:textSize="20sp"/>
+        android:background="@color/list_row_start_color"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/img_pembeli"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:src="@drawable/ic_profilku"
+            android:layout_gravity="center"/>
+    </LinearLayout>
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -134,5 +133,6 @@
         android:background="@drawable/bg_button_ungu"
         android:textSize="20sp"
         android:textColor="@color/list_row_hover_end_color"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="50dp"/>
 </LinearLayout>
