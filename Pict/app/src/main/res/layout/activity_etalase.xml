@@ -65,9 +65,9 @@
                     android:textSize="18sp"/>
             </LinearLayout>
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_etalase"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:spanCount="3"/>
+                android:layout_height="wrap_content"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </RelativeLayout>

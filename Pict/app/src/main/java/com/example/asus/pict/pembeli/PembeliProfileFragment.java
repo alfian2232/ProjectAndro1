@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.example.asus.pict.GetStartedFirst;
 import com.example.asus.pict.Petani.PengaturanAkunActivity;
@@ -45,6 +46,14 @@ public class PembeliProfileFragment extends Fragment {
                 editor.apply();
                 getActivity().finish();
                 startActivity(new Intent(getContext(), GetStartedFirst.class));
+            }
+        });
+
+        LinearLayout keb_app = view.findViewById(R.id.keb_app);
+        keb_app.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),EtalaseActivity.class));
             }
         });
 

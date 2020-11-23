@@ -1,5 +1,6 @@
 package com.example.asus.pict.Petani;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,31 +23,31 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register2);
         initComponent();
-        nama=et_nama.getText().toString();
-        nomer=et_nomer.getText().toString();
-        email=et_email.getText().toString();
-        user=et_username.getText().toString();
-        alamat=et_alamat.getText().toString();
-        password=et_password.getText().toString();
         btn_daftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (nama.isEmpty() || nomer.isEmpty() ||email.isEmpty() ||user.isEmpty() ||alamat.isEmpty() ||password.isEmpty()){
-                    Toast.makeText(RegisterActivity.this, "Lengkapi Data Terlebih Dahulu", Toast.LENGTH_SHORT).show();
-                } else {
-                    Intent intent = new Intent(RegisterActivity.this,TokoActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("nama", nama);
-                    bundle.putString("nomer", nomer);
-                    bundle.putString("email", email);
-                    bundle.putString("user", user);
-                    bundle.putString("alamat", alamat);
-                    bundle.putString("password", password);
+            nama=et_nama.getText().toString();
+            nomer=et_nomer.getText().toString();
+            email=et_email.getText().toString();
+            user=et_username.getText().toString();
+            alamat=et_alamat.getText().toString();
+            password=et_password.getText().toString();
+            if (nama.isEmpty() || nomer.isEmpty() ||email.isEmpty() ||user.isEmpty() ||alamat.isEmpty() ||password.isEmpty()){
+                Toast.makeText(RegisterActivity.this, "Lengkapi Data Terlebih Dahulu", Toast.LENGTH_SHORT).show();
+            } else {
+                Intent intent = new Intent(RegisterActivity.this,TokoActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("nama", nama);
+                bundle.putString("nomer", nomer);
+                bundle.putString("email", email);
+                bundle.putString("user", user);
+                bundle.putString("alamat", alamat);
+                bundle.putString("password", password);
 
-                    intent.putExtras(bundle);
+                intent.putExtras(bundle);
 //                    Log.i("asd",""+et_nama.getText());
-                    startActivity(intent);
-                }
+                startActivity(intent);
+            }
             }
         });
 

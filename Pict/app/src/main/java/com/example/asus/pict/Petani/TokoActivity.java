@@ -49,58 +49,62 @@ public class TokoActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("data_user", Context.MODE_PRIVATE);
         initComponent();
 
-        try {
-            jsonObject.put("nama_toko", et_namatoko.getText());
-            jsonObject.put("deskripsi", et_deskripsi.getText());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+
         btn_daftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pDialog = new ProgressDialog(TokoActivity.this);
-                pDialog.setCancelable(false);
-                pDialog.setMessage("Loading ...");
-                pDialog.show();
-                if (et_namatoko.getText().equals("") || et_deskripsi.getText().equals("")){
-                    Toast.makeText(TokoActivity.this, "Lengkapi Data Terlebih Dahulu", Toast.LENGTH_SHORT).show();
-                    pDialog.cancel();
-                } else {
-                    Bundle bundle = getIntent().getExtras();
-                    nama = bundle.getString("nama");
-                    nomer = bundle.getString("nomer");
-                    email = bundle.getString("email");
-                    user = bundle.getString("user");
-                    alamat = bundle.getString("alamat");
-                    password = bundle.getString("password");
-                    Log.i("abc", ""+alamat);
-                    Log.i("aaaa", ""+jsonObject.toString());
-                    BaseApiService service = RetrofitClient.getClient1().create(BaseApiService.class);
-                    Call<RegResponse> call = service.registerRequest(user,email,password, nama,nomer,alamat,jsonObject.toString());
-                    call.enqueue(new Callback<RegResponse>() {
-                        @Override
-                        public void onResponse(Call<RegResponse> call, Response<RegResponse> response) {
-                            if(!response.body().getError()){
-                                Toast.makeText(TokoActivity.this, "Registrasi Berhasil", Toast.LENGTH_SHORT).show();
-                                SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.putInt("id", response.body().getUid());
-                                editor.putString("role", "petani");
-                                editor.putBoolean("sudahLogin", true);
-                                editor.apply();
-                                startActivity(new Intent(TokoActivity.this, HalamanUtamaActivity.class));
-                            }else{
-                                Toast.makeText(TokoActivity.this, "Registrasi Gagal", Toast.LENGTH_SHORT).show();
-                            }
-                            pDialog.cancel();
-                        }
-
-                        @Override
-                        public void onFailure(Call<RegResponse> call, Throwable t) {
-                            Toast.makeText(TokoActivity.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
-                            pDialog.cancel();
-                        }
-                    });
+            pDialog = new ProgressDialog(TokoActivity.this);
+            pDialog.setCancelable(false);
+            pDialog.setMessage("Loading ...");
+            pDialog.show();
+            String nama_toko = et_namatoko.getText().toString();
+            String desc = et_deskripsi.getText().toString();
+            if (nama_toko.isEmpty() || desc.isEmpty()){
+                Toast.makeText(TokoActivity.this, "Lengkapi Data Terlebih Dahulu", Toast.LENGTH_SHORT).show();
+                pDialog.cancel();
+            } else {
+                try {
+                    jsonObject.put("nama_toko", nama_toko);
+                    jsonObject.put("deskripsi", desc);
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
+                Bundle bundle = getIntent().getExtras();
+                nama = bundle.getString("nama");
+                nomer = bundle.getString("nomer");
+                email = bundle.getString("email");
+                user = bundle.getString("user");
+                alamat = bundle.getString("alamat");
+                password = bundle.getString("password");
+                Log.i("abc", ""+alamat);
+                Log.i("aaaa", ""+jsonObject.toString());
+                BaseApiService service = RetrofitClient.getClient1().create(BaseApiService.class);
+                Call<RegResponse> call = service.registerRequest(user,email,password, nama,nomer,alamat,jsonObject.toString());
+                call.enqueue(new Callback<RegResponse>() {
+                    @Override
+                    public void onResponse(Call<RegResponse> call, Response<RegResponse> response) {
+                        if(!response.body().getError()){
+                            Toast.makeText(TokoActivity.this, "Registrasi Berhasil", Toast.LENGTH_SHORT).show();
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putInt("id", response.body().getUid());
+                            editor.putString("role", "petani");
+                            editor.putBoolean("sudahLogin", true);
+                            editor.apply();
+                            startActivity(new Intent(TokoActivity.this, HalamanUtamaActivity.class));
+                            finish();
+                        }else{
+                            Toast.makeText(TokoActivity.this, "Registrasi Gagal", Toast.LENGTH_SHORT).show();
+                        }
+                        pDialog.cancel();
+                    }
+
+                    @Override
+                    public void onFailure(Call<RegResponse> call, Throwable t) {
+                        Toast.makeText(TokoActivity.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                        pDialog.cancel();
+                    }
+                });
+            }
             }
         });
     }

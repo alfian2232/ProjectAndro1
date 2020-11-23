@@ -35,13 +35,13 @@ public class PengaturanAkunActivity extends AppCompatActivity {
         btn_keluar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
                 SharedPreferences sharedPreferences = getSharedPreferences("data_user", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putInt("id", 0);
                 editor.putString("role", null);
                 editor.putBoolean("sudahLogin", false);
                 editor.apply();
-                finish();
                 startActivity(new Intent(PengaturanAkunActivity.this, GetStartedFirst.class));
             }
         });

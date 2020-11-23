@@ -1,6 +1,7 @@
 package com.example.asus.pict.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.asus.pict.AdapterUserList;
+import com.example.asus.pict.Petani.UpdateProdukActivity;
 import com.example.asus.pict.R;
 import com.example.asus.pict.Request.GetProdukRes;
 import com.google.gson.Gson;
@@ -46,13 +48,34 @@ public class ProdukPetaniAdapter extends RecyclerView.Adapter<ProdukPetaniAdapte
     @Override
     public void onBindViewHolder(@NonNull ProdukHolder holder, int position) {
         JsonParser parser = new JsonParser();
-        JsonObject jsonObject = (JsonObject) parser.parse(ListProduk.get(position).getProduk());
-        String nama_produk = jsonObject.get("nama_produk").getAsString();
-        String stok = jsonObject.get("stok").toString();
+        final JsonObject jsonObject = (JsonObject) parser.parse(ListProduk.get(position).getProduk());
+        final String nama_produk = jsonObject.get("nama_produk").getAsString();
+        final int stok = jsonObject.get("stok").getAsInt();
+        final float berat = jsonObject.get("berat").getAsFloat();
+        final float harga = jsonObject.get("harga").getAsFloat();
+        final String deskripsi = jsonObject.get("desc").getAsString();
+        final String kategori = ListProduk.get(position).getKategori();
+        final String image = ListProduk.get(position).getImg();
+        final int id = ListProduk.get(position).getId();
         holder.nama_produk.setText(nama_produk);
         holder.stok.setText("Stok : "+stok);
         holder.kategori.setText("Kategori : "+ListProduk.get(position).getKategori());
         Glide.with(mCtx).load(ListProduk.get(position).getImg()).into(holder.iv_produk);
+        holder.btn_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mCtx, UpdateProdukActivity.class);
+                intent.putExtra("nama_produk",nama_produk);
+                intent.putExtra("stok",stok);
+                intent.putExtra("kategori",kategori);
+                intent.putExtra("id",id);
+                intent.putExtra("berat",berat);
+                intent.putExtra("harga",harga);
+                intent.putExtra("desc",deskripsi);
+                intent.putExtra("image",image);
+                mCtx.startActivity(intent);
+            }
+        });
     }
 
     @Override

@@ -14,7 +14,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -34,6 +33,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.example.asus.pict.Adapter.EtalaseListAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,8 +41,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.prefs.Preferences;
-import java.util.zip.Inflater;
 
 import static com.android.volley.VolleyLog.TAG;
 
@@ -54,7 +52,7 @@ public class Fragment_Profile extends Fragment {
 
     private RecyclerView recyclerView;
     List<ListUserPosting> userPostingList;
-    AdapterUserPostingList adapter;
+    EtalaseListAdapter adapter;
     ProgressDialog pDialog;
     SharedPreferences sharedPreferences;
     Toolbar toolbar;
@@ -104,7 +102,7 @@ public class Fragment_Profile extends Fragment {
         recyclerView.setLayoutManager(gridLayoutManager);
         userPostingList = new ArrayList<>();
 
-        adapter = new AdapterUserPostingList(getActivity(), userPostingList);
+//        adapter = new EtalaseListAdapter(getActivity(), userPostingList);
         loadList();
     }
 

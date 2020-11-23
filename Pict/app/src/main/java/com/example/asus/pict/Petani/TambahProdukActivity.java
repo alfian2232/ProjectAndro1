@@ -141,6 +141,7 @@ public class TambahProdukActivity extends AppCompatActivity {
                                 Intent intent = new Intent(TambahProdukActivity.this,ProdukSayaActivity.class);
                                 intent.putExtra("id_petani",id_petani);
                                 startActivity(intent);
+                                finish();
                             }else{
                                 Toast.makeText(TambahProdukActivity.this, "Gagal", Toast.LENGTH_SHORT).show();
                             }

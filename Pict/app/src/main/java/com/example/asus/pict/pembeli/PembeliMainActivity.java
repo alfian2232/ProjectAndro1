@@ -20,7 +20,7 @@ public class PembeliMainActivity extends AppCompatActivity implements BottomNavi
         setContentView(R.layout.activity_pembeli_main);
         loadFragment(new Fragment_Home());
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bn_main);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.nav_pembeli);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
     }
 
@@ -38,14 +38,11 @@ public class PembeliMainActivity extends AppCompatActivity implements BottomNavi
     public boolean onNavigationItemSelected(@NonNull MenuItem item){
         Fragment fragment = null;
         switch(item.getItemId()){
-            case R.id.id_home:
-                fragment = new Fragment_Home();
+            case R.id.p_home:
+                fragment = new PembeliHomeFragment();
                 break;
-            case R.id.id_search:
-                fragment = new Fragment_Search();
-                break;
-            case  R.id.id_profile:
-                fragment = new Fragment_Profile();
+            case  R.id.p_profile:
+                fragment = new PembeliProfileFragment();
                 break;
         }
         return loadFragment(fragment);

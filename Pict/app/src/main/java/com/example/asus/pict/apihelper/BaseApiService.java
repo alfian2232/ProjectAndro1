@@ -2,6 +2,7 @@ package com.example.asus.pict.apihelper;
 
 import com.example.asus.pict.ListPosting;
 import com.example.asus.pict.Request.AddProdukRes;
+import com.example.asus.pict.Request.EtalaseRes;
 import com.example.asus.pict.Request.GetProdukRes;
 import com.example.asus.pict.Request.ProdukReq;
 import com.example.asus.pict.Request.RegResponse;
@@ -86,12 +87,11 @@ public interface BaseApiService {
 
     @FormUrlEncoded
     @POST("update_informasi.php")
-    Call<ResponseBody> updateProduk(@Field("id_users") int id_users,
-                                    @Field("foto_informasi") String foto_informasi,
-                                    @Field("ImageName") String ImageName,
-                                    @Field("judul_informasi") String judul_informasi,
-                                    @Field("harga") String harga,
-                                    @Field("id") int id);
+    Call<AddProdukRes> updateProduk(@Field("id") int id,
+                                    @Field("produk") String produk,
+                                    @Field("kategori") String kategori,
+                                    @Field("img") String img,
+                                    @Field("foto_informasi") String judul_informasi);
 
     @FormUrlEncoded
     @POST("loginpembeli.php")
@@ -109,4 +109,7 @@ public interface BaseApiService {
                                       @Field("alamat") String alamat);
 
     BaseApiService create(Class<BaseApiService> baseApiServiceClass);
+
+    @GET("etalase.php")
+    Call<EtalaseRes>getEtalase(@Query("id") int id);
 }

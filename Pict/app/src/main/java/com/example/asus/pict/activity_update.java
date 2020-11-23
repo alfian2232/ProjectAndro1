@@ -122,25 +122,25 @@ public class activity_update extends AppCompatActivity {
                                 .addConverterFactory(GsonConverterFactory.create())
                                 .build();
 
-                        BaseApiService service = retrofit.create(BaseApiService.class);
-                        Call<ResponseBody> call = service.updateProduk(Integer.parseInt(id_users),ConvertImage,f.getName()==""?item.getPhoto_name():f.getName(),getJudul,getHarga,Integer.parseInt(item.getId()));
-                        call.enqueue(new Callback<ResponseBody>() {
-                            @Override
-                            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                                if(response.code() == 200){
-                                    Toast.makeText(activity_update.this, "Berhasil Dupdate", Toast.LENGTH_SHORT).show();
-                                    startActivityForResult(new Intent(activity_update.this,MainActivity.class),12);
-                                }else{
-                                    Toast.makeText(activity_update.this, "Gagal Diupdate", Toast.LENGTH_SHORT).show();
-                                }
-                                pDialog.cancel();
-                            }
-
-                            @Override
-                            public void onFailure(Call<ResponseBody> call, Throwable t) {
-
-                            }
-                        });
+//                        BaseApiService service = retrofit.create(BaseApiService.class);
+//                        Call<ResponseBody> call = service.updateProduk(Integer.parseInt(id_users),ConvertImage,f.getName()==""?item.getPhoto_name():f.getName(),getJudul,getHarga,Integer.parseInt(item.getId()));
+//                        call.enqueue(new Callback<ResponseBody>() {
+//                            @Override
+//                            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+//                                if(response.code() == 200){
+//                                    Toast.makeText(activity_update.this, "Berhasil Dupdate", Toast.LENGTH_SHORT).show();
+//                                    startActivityForResult(new Intent(activity_update.this,MainActivity.class),12);
+//                                }else{
+//                                    Toast.makeText(activity_update.this, "Gagal Diupdate", Toast.LENGTH_SHORT).show();
+//                                }
+//                                pDialog.cancel();
+//                            }
+//
+//                            @Override
+//                            public void onFailure(Call<ResponseBody> call, Throwable t) {
+//
+//                            }
+//                        });
                     }else{
                         Toast.makeText(activity_update.this, "Masukkan Gambar", Toast.LENGTH_SHORT).show();
                     }

@@ -43,7 +43,7 @@ public class Activity_profile_user extends AppCompatActivity {
     ImageView imageView;
     private RecyclerView recyclerView;
     List<ListProfilePosting> profilePostingList;
-    AdapterProfilePostingList adapter;
+//    AdapterProfilePostingList adapter;
     ProgressDialog pDialog;
     SharedPreferences sharedPreferences;
     Toolbar toolbar;
@@ -85,7 +85,7 @@ public class Activity_profile_user extends AppCompatActivity {
         recyclerView.setLayoutManager(gridLayoutManager);
         profilePostingList = new ArrayList<>();
 
-        adapter = new AdapterProfilePostingList(this, profilePostingList);
+//        adapter = new AdapterProfilePostingList(this, profilePostingList);
         loadList();
     }
 
@@ -120,7 +120,7 @@ public class Activity_profile_user extends AppCompatActivity {
                                         product.getString("nama_users2")
                                 ));
                             }
-                            recyclerView.setAdapter(adapter);
+//                            recyclerView.setAdapter(adapter);
 
                         } catch (JSONException e) {
                             e.printStackTrace();

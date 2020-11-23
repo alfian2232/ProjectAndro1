@@ -58,10 +58,10 @@ public class ProdukSayaActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("data_user", Context.MODE_PRIVATE);
         int id = sharedPreferences.getInt("id",0);
         Map<String, String> query = new HashMap<>();
-        query.put("id_petani","7");
+        query.put("id_petani", String.valueOf(id));
 
         BaseApiService service = RetrofitClient.getClient1().create(BaseApiService.class);
-        Call<List<GetProdukRes>> call = service.getAllDataProdukByPetani(7);
+        Call<List<GetProdukRes>> call = service.getAllDataProdukByPetani(id);
         call.enqueue(new Callback<List<GetProdukRes>>() {
             @Override
             public void onResponse(Call<List<GetProdukRes>> call, Response<List<GetProdukRes>> response) {
