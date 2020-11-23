@@ -2,9 +2,6 @@ package com.example.asus.pict.apihelper;
 
 import com.example.asus.pict.ListPosting;
 import com.example.asus.pict.Request.AddProdukRes;
-import com.example.asus.pict.Request.EtalaseRes;
-import com.example.asus.pict.Request.GetProdukRes;
-import com.example.asus.pict.Request.ProdukReq;
 import com.example.asus.pict.Request.RegResponse;
 import com.example.asus.pict.Request.SearchResponse;
 
@@ -112,4 +109,18 @@ public interface BaseApiService {
 
     @GET("etalase.php")
     Call<EtalaseRes>getEtalase(@Query("id") int id);
+
+
+    @FormUrlEncoded
+    @POST("update_password.php")
+    Call<AddProdukRes> updatePassword(@Field("id") int id,
+                                      @Field("passlama") String passlama,
+                                      @Field("passbaru") String passbaru);
+    @FormUrlEncoded
+    @POST("update_profil.php")
+    Call<AddProdukRes> updatePembeli(@Field("id") int id,
+                                      @Field("nama") String nama,
+                                      @Field("nomer") String nomer,
+                                     @Field("alamat") String alamat);
+
 }
