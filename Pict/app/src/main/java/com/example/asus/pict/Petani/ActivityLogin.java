@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.asus.pict.R;
@@ -28,6 +29,7 @@ public class ActivityLogin extends AppCompatActivity {
     EditText et_username,et_nama_toko,et_pass;
     SharedPreferences sharedPreferences;
     ProgressDialog pDialog;
+    TextView idSignup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +38,14 @@ public class ActivityLogin extends AppCompatActivity {
         idButtonLogin = findViewById(R.id.idButtonLogin);
         et_username = findViewById(R.id.et_userpetani);
         et_pass = findViewById(R.id.et_passpetani);
+        idSignup = findViewById(R.id.idSignup);
+
+        idSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
+            }
+        });
 
         idButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
