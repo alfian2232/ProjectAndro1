@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.asus.pict.R;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -60,8 +61,8 @@ public class DetailProdukActivity extends AppCompatActivity implements View.OnCl
         tv_harga.setText("Rp. "+harga);
         tv_toko.setText(namatoko.get("nama_toko").getAsString());
         tv_desc.setText("berat : "+berat+" gram\nStok : "+stok+"\n"+desc);
-        Glide.with(getApplicationContext())
-                .load(img)
+        Glide.with(DetailProdukActivity.this)
+                .load(img).apply(new RequestOptions())
                 .into(iv_foto);
 
         btn_beli.setOnClickListener(this);

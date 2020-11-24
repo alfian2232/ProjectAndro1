@@ -1,10 +1,12 @@
 package com.example.asus.pict.pembeli;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -32,11 +34,19 @@ public class PembeliHomeFragment extends Fragment {
     RecyclerView recyclerView;
     GridLayoutManager gridLayoutManager;
     ProdukLimitAdapter adapter;
+    CardView cv_seacrh;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_pembeli_home, container, false);
+        cv_seacrh = v.findViewById(R.id.cv_seacrh);
+        cv_seacrh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),SearchActivityPembeli.class));
+            }
+        });
         return v;
     }
 
