@@ -18,7 +18,7 @@ public class PembeliMainActivity extends AppCompatActivity implements BottomNavi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pembeli_main);
-        loadFragment(new Fragment_Home());
+        loadFragment(new PembeliHomeFragment());
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.nav_pembeli);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);

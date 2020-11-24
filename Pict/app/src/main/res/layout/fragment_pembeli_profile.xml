@@ -17,7 +17,7 @@
             android:id="@+id/img_pembeli"
             android:layout_width="300dp"
             android:layout_height="200dp"
-            android:src="@drawable/ic_profilku"
+            android:src="@drawable/ic_profile"
             android:layout_gravity="center"/>
     </LinearLayout>
     <android.support.v7.widget.CardView

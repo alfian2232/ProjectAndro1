@@ -4,6 +4,7 @@ import com.example.asus.pict.ListPosting;
 import com.example.asus.pict.Request.AddProdukRes;
 import com.example.asus.pict.Request.EtalaseRes;
 import com.example.asus.pict.Request.GetProdukRes;
+import com.example.asus.pict.Request.PembeliRes;
 import com.example.asus.pict.Request.ProdukLimitRes;
 import com.example.asus.pict.Request.RegResponse;
 import com.example.asus.pict.Request.SearchResponse;
@@ -128,5 +129,8 @@ public interface BaseApiService {
 
     @GET("list_posting.php")
     Call<ProdukLimitRes>getProdukLimit();
+
+    @GET("profilpembeli.php")
+    Call<PembeliRes> getPembeliProfil(@Query("id") int id);
 
 }

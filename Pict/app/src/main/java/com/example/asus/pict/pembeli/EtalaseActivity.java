@@ -50,8 +50,8 @@ public class EtalaseActivity extends AppCompatActivity {
         pDialog.setCancelable(false);
         pDialog.setMessage("Loading ...");
         pDialog.show();
-        Bundle bundle = new Bundle();
-        int id = bundle.getInt("id",0);
+        Bundle bundle = getIntent().getExtras();
+        int id = bundle.getInt("id");
         BaseApiService service = RetrofitClient.getClient1().create(BaseApiService.class);
         Call<EtalaseRes> call = service.getEtalase(id);
         call.enqueue(new Callback<EtalaseRes>() {

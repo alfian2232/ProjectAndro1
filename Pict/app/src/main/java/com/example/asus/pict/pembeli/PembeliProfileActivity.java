@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.asus.pict.Petani.TambahProdukActivity;
 import com.example.asus.pict.R;
 import com.example.asus.pict.Request.AddProdukRes;
+import com.example.asus.pict.Request.PembeliRes;
 import com.example.asus.pict.apihelper.BaseApiService;
 import com.example.asus.pict.apihelper.RetrofitClient;
 
@@ -48,6 +49,24 @@ public class PembeliProfileActivity extends AppCompatActivity implements View.On
         id = sharedPreferences.getInt("id",0);
         Log.i("adwqa",""+id);
 
+        BaseApiService service = RetrofitClient.getClient1().create(BaseApiService.class);
+        Call<PembeliRes> call = service.getPembeliProfil(id);
+        call.enqueue(new Callback<PembeliRes>() {
+            @Override
+            public void onResponse(Call<PembeliRes> call, Response<PembeliRes> response) {
+                if (!response.body().getError()){
+                    et_nama.setText(response.body().getNama());
+                    et_nomer.setText(response.body().getNomer());
+                    et_alamat.setText(response.body().getAlamat());
+                } else Toast.makeText(PembeliProfileActivity.this, "Gagal Ambil Data", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<PembeliRes> call, Throwable t) {
+                Toast.makeText(PembeliProfileActivity.this, "Koneksi Gagal", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     @Override
@@ -66,6 +85,7 @@ public class PembeliProfileActivity extends AppCompatActivity implements View.On
                 alamat = et_alamat.getText().toString();
                 if (nama.isEmpty() || nomer.isEmpty() || alamat.isEmpty()){
                     Toast.makeText(PembeliProfileActivity.this, "Lengkapi Data Terlebih Dahulu", Toast.LENGTH_SHORT).show();
+                    pDialog.cancel();
                 } else {
                     BaseApiService service = RetrofitClient.getClient1().create(BaseApiService.class);
                     Call<AddProdukRes> call = service.updatePembeli(id,nama,nomer,alamat);

@@ -42,13 +42,13 @@
             android:layout_height="200dp"
             android:src="@drawable/ic_splash_screen"/>
     </LinearLayout>
-
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:id="@+id/rv_allproduk"
         tools:listitem="@layout/item_list_for_profile"/>
+
 
 
 </LinearLayout>
