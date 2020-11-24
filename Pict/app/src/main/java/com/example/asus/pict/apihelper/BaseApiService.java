@@ -4,6 +4,7 @@ import com.example.asus.pict.ListPosting;
 import com.example.asus.pict.Request.AddProdukRes;
 import com.example.asus.pict.Request.EtalaseRes;
 import com.example.asus.pict.Request.GetProdukRes;
+import com.example.asus.pict.Request.ProdukLimitRes;
 import com.example.asus.pict.Request.RegResponse;
 import com.example.asus.pict.Request.SearchResponse;
 
@@ -81,7 +82,7 @@ public interface BaseApiService {
     @GET("search.php")
     Call<List<SearchResponse>>getAllDataSearch();
 
-    @GET("list_posting.php")
+    @GET("list_posting_user.php")
     Call<List<GetProdukRes>>getAllDataProdukByPetani(@Query("id_petani") int id);
 
     @FormUrlEncoded
@@ -124,5 +125,8 @@ public interface BaseApiService {
                                       @Field("nama") String nama,
                                       @Field("nomer") String nomer,
                                      @Field("alamat") String alamat);
+
+    @GET("list_posting.php")
+    Call<ProdukLimitRes>getProdukLimit();
 
 }

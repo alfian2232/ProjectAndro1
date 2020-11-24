@@ -50,8 +50,10 @@ public class EtalaseActivity extends AppCompatActivity {
         pDialog.setCancelable(false);
         pDialog.setMessage("Loading ...");
         pDialog.show();
+        Bundle bundle = new Bundle();
+        int id = bundle.getInt("id",0);
         BaseApiService service = RetrofitClient.getClient1().create(BaseApiService.class);
-        Call<EtalaseRes> call = service.getEtalase(7);
+        Call<EtalaseRes> call = service.getEtalase(id);
         call.enqueue(new Callback<EtalaseRes>() {
             @Override
             public void onResponse(Call<EtalaseRes> call, Response<EtalaseRes> response) {
@@ -60,7 +62,7 @@ public class EtalaseActivity extends AppCompatActivity {
                     final JsonObject jsonObject = (JsonObject) parser.parse(response.body().getToko());
                     tvnama_toko.setText(jsonObject.get("nama_toko").getAsString());
                     tv_desc.setText(jsonObject.get("deskripsi").getAsString());
-                    gridLayoutManager = new GridLayoutManager(getApplicationContext(), 3);
+                    gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
                     recyclerView.setHasFixedSize(true);
                     recyclerView.setLayoutManager(gridLayoutManager);
                     adapter = new EtalaseListAdapter(EtalaseActivity.this,response.body());
