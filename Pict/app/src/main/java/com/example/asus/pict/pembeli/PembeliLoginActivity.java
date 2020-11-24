@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.asus.pict.Petani.ActivityLogin;
@@ -28,6 +29,7 @@ public class PembeliLoginActivity extends AppCompatActivity {
     EditText et_username,et_pass;
     SharedPreferences sharedPreferences;
     ProgressDialog pDialog;
+    TextView pembeli_txtsignup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,14 @@ public class PembeliLoginActivity extends AppCompatActivity {
         idButtonLogin = findViewById(R.id.idButtonLogin);
         et_username = findViewById(R.id.pembeli_username);
         et_pass = findViewById(R.id.pembeli_password);
+        pembeli_txtsignup = findViewById(R.id.pembeli_txtsignup);
+
+        pembeli_txtsignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),PembeliRegisterActivity.class));
+            }
+        });
 
         idButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
