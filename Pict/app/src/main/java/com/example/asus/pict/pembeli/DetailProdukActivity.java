@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -36,36 +37,35 @@ public class DetailProdukActivity extends AppCompatActivity implements View.OnCl
         iv_foto = findViewById(R.id.img_produk);
         btn_beli = findViewById(R.id.btn_beli);
         toko = findViewById(R.id.toko);
-        getData();
-        tv_namaproduk.setText(nama_produk);
-        tv_harga.setText(harga);
-        tv_toko.setText(nama);
-        tv_desc.setText(desc);
-        Glide.with(getApplicationContext())
-                .load(img)
-                .into(iv_foto);
-
-        btn_beli.setOnClickListener(this);
-        toko.setOnClickListener(this);
-    }
-
-    public void getData(){
-        Bundle bundle = new Bundle();
-        data = bundle.getString("data","");
-        id = bundle.getInt("id",0);
-        id_petani = bundle.getInt("id_petani",0);
-        nama = bundle.getString("nama","");
-        kategori = bundle.getString("kategori","");
-        img = bundle.getString("img","");
-        nomer = bundle.getString("nomer","");
+        Bundle bundle = getIntent().getExtras();
+        data = bundle.getString("data");
+        id = bundle.getInt("id");
+        id_petani = bundle.getInt("id_petani");
+        nama = bundle.getString("nama");
+        kategori = bundle.getString("kategori");
+        img = bundle.getString("foto");
+        nomer = bundle.getString("nomer");
+        Log.i("aaa", "onCreate: "+data);
+        Log.i("aab", "onCreate: "+id);
         JsonParser jsonParser = new JsonParser();
         JsonObject hasil = (JsonObject) jsonParser.parse(data);
+        JsonObject namatoko = (JsonObject) jsonParser.parse(nama);
 
         nama_produk = hasil.get("nama_produk").getAsString();
         harga = hasil.get("harga").getAsString();
         berat = hasil.get("berat").getAsString();
         desc = hasil.get("desc").getAsString();
         stok = hasil.get("stok").getAsString();
+        tv_namaproduk.setText(nama_produk);
+        tv_harga.setText("Rp. "+harga);
+        tv_toko.setText(namatoko.get("nama_toko").getAsString());
+        tv_desc.setText("berat : "+berat+" gram\nStok : "+stok+"\n"+desc);
+        Glide.with(getApplicationContext())
+                .load(img)
+                .into(iv_foto);
+
+        btn_beli.setOnClickListener(this);
+        toko.setOnClickListener(this);
     }
 
     @Override

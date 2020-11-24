@@ -44,8 +44,6 @@ public class PembeliHomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = view.findViewById(R.id.rv_allproduk);
-
-
         pDialog = new ProgressDialog(getContext());
         pDialog.setCancelable(false);
         pDialog.setMessage("Loading ...");
@@ -59,7 +57,7 @@ public class PembeliHomeFragment extends Fragment {
                     gridLayoutManager = new GridLayoutManager(getActivity(), 2);
                     recyclerView.setHasFixedSize(true);
                     recyclerView.setLayoutManager(gridLayoutManager);
-                    adapter = new ProdukLimitAdapter(getActivity(),response.body());
+                    adapter = new ProdukLimitAdapter(getContext(),response.body());
                     recyclerView.setAdapter(adapter);
                 }else{
                     Toast.makeText(getContext(), "Load Gagal", Toast.LENGTH_SHORT).show();

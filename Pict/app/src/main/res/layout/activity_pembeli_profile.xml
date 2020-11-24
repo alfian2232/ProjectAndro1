@@ -104,7 +104,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginVertical="20dp"
             android:background="@drawable/ic_border_radius_for_button"
             android:text="Simpan"
             android:textAllCaps="false"

@@ -3,7 +3,6 @@ package com.example.asus.pict.pembeli;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -14,21 +13,12 @@ import com.example.asus.pict.Fragment_Search;
 import com.example.asus.pict.R;
 
 public class PembeliMainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
-    BottomNavigationView nav_pembeli;
-    FragmentManager fragmentManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pembeli_main);
-        nav_pembeli = findViewById(R.id.nav_pembeli);
-
-            nav_pembeli.setSelectedItemId(R.id.p_home);
-            Fragment_Home f_home = new Fragment_Home();
-            fragmentManager = getSupportFragmentManager();
-            fragmentManager
-                    .beginTransaction()
-                    .replace(R.id.fl_container, f_home).addToBackStack(null)
-                    .commit();
+        loadFragment(new PembeliHomeFragment());
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.nav_pembeli);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
@@ -36,8 +26,7 @@ public class PembeliMainActivity extends AppCompatActivity implements BottomNavi
 
     private boolean loadFragment(Fragment fragment){
         if (fragment != null){
-            fragmentManager = getSupportFragmentManager();
-            fragmentManager
+            getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fl_container, fragment)
                     .commit();

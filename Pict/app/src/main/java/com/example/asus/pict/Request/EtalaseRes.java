@@ -15,6 +15,9 @@ public class EtalaseRes {
     @SerializedName("toko")
     @Expose
     private String toko;
+    @SerializedName("nomer")
+    @Expose
+    private String nomer;
     @SerializedName("data")
     @Expose
     private List<DataEtalaseRes> data = null;
@@ -51,5 +54,11 @@ public class EtalaseRes {
         this.data = data;
     }
 
+    public String getNomer() {
+        return nomer;
+    }
 
+    public void setNomer(String nomer) {
+        this.nomer = nomer;
+    }
 }

@@ -1,6 +1,5 @@
 package com.example.asus.pict.Adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,10 +20,11 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 public class ProdukLimitAdapter extends RecyclerView.Adapter<ProdukLimitAdapter.ProdukViewHolder> {
-
-    Activity context;
+    String produk, nama, kategori, foto, nomer;
+    int id, id_petani;
+    Context context;
     ProdukLimitRes produkLimitRes;
-    public ProdukLimitAdapter(Activity context, ProdukLimitRes produkLimitRes) {
+    public ProdukLimitAdapter(Context context, ProdukLimitRes produkLimitRes) {
         this.context = context;
         this.produkLimitRes = produkLimitRes;
     }
@@ -39,29 +38,30 @@ public class ProdukLimitAdapter extends RecyclerView.Adapter<ProdukLimitAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProdukLimitAdapter.ProdukViewHolder holder, final int position) {
-        final String produk = produkLimitRes.getData().get(position).getProduk();
+    public void onBindViewHolder(@NonNull final ProdukLimitAdapter.ProdukViewHolder holder, int position) {
+        produk = produkLimitRes.getData().get(position).getProduk();
         JsonParser jsonParser = new JsonParser();
         JsonObject hasil = (JsonObject) jsonParser.parse(produk);
-
-        final int id = produkLimitRes.getData().get(position).getId();
-        final int id_petani = produkLimitRes.getData().get(position).getIdPetani();
-        final String nama = produkLimitRes.getData().get(position).getNama();
-        final String kategori = produkLimitRes.getData().get(position).getKategori();
-        final String foto = produkLimitRes.getData().get(position).getImg();
-        final String nomer = produkLimitRes.getData().get(position).getNomer();
 
         holder.tv_nama.setText(hasil.get("nama_produk").getAsString());
         holder.tv_harga.setText(hasil.get("harga").getAsString());
         Glide.with(context)
                 .load(produkLimitRes.getData().get(position).getImg())
                 .into(holder.iv_foto);
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
+        holder.iv_foto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String data = produkLimitRes.getData().get(holder.getAdapterPosition()).getProduk();
+                id = produkLimitRes.getData().get(holder.getAdapterPosition()).getId();
+                id_petani = produkLimitRes.getData().get(holder.getAdapterPosition()).getIdPetani();
+                nama = produkLimitRes.getData().get(holder.getAdapterPosition()).getNama();
+                kategori = produkLimitRes.getData().get(holder.getAdapterPosition()).getKategori();
+                foto = produkLimitRes.getData().get(holder.getAdapterPosition()).getImg();
+                nomer = produkLimitRes.getData().get(holder.getAdapterPosition()).getNomer();
+
                 Intent intent = new Intent(context, DetailProdukActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("data", produk);
+                bundle.putString("data", data);
                 bundle.putInt("id", id);
                 bundle.putInt("id_petani", id_petani);
                 bundle.putString("nama", nama);
@@ -76,7 +76,7 @@ public class ProdukLimitAdapter extends RecyclerView.Adapter<ProdukLimitAdapter.
 
     @Override
     public int getItemCount() {
-        return 0;
+        return produkLimitRes.getData().size();
     }
 
     public class ProdukViewHolder extends RecyclerView.ViewHolder {
@@ -88,7 +88,7 @@ public class ProdukLimitAdapter extends RecyclerView.Adapter<ProdukLimitAdapter.
             iv_foto = itemView.findViewById(R.id.img_postingan_user);
             tv_nama = itemView.findViewById(R.id.nama_pro);
             tv_harga = itemView.findViewById(R.id.hargaproduk);
-            cardView = itemView.findViewById(R.id.cardView_posting);
+            cardView = itemView.findViewById(R.id.cv_produk);
         }
     }
 }

@@ -53,6 +53,7 @@ public class PasswordPembeliActivity extends AppCompatActivity {
                     if (!passbaru.equals(konf)){
                         Toast.makeText(PasswordPembeliActivity.this, "Password Tidak Sama", Toast.LENGTH_SHORT).show();
                         et_konfir.requestFocus();
+                        pDialog.dismiss();
                     } else {
                         BaseApiService service = RetrofitClient.getClient1().create(BaseApiService.class);
                         Call<AddProdukRes> call = service.updatePassword(id, passlama, passbaru);
