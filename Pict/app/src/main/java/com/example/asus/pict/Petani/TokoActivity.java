@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.asus.pict.R;
+import com.example.asus.pict.Request.RegReq;
 import com.example.asus.pict.Request.RegResponse;
 import com.example.asus.pict.activity_update;
 import com.example.asus.pict.apihelper.BaseApiService;
@@ -57,8 +58,8 @@ public class TokoActivity extends AppCompatActivity {
             pDialog.setCancelable(false);
             pDialog.setMessage("Loading ...");
             pDialog.show();
-            String nama_toko = et_namatoko.getText().toString();
-            String desc = et_deskripsi.getText().toString();
+            final String nama_toko = et_namatoko.getText().toString();
+            final String desc = et_deskripsi.getText().toString();
             if (nama_toko.isEmpty() || desc.isEmpty()){
                 Toast.makeText(TokoActivity.this, "Lengkapi Data Terlebih Dahulu", Toast.LENGTH_SHORT).show();
                 pDialog.cancel();
@@ -89,8 +90,16 @@ public class TokoActivity extends AppCompatActivity {
                             editor.putInt("id", response.body().getUid());
                             editor.putString("role", "petani");
                             editor.putBoolean("sudahLogin", true);
+                            editor.putString("nama",nama);
+                            editor.putString("nomer",nomer);
+                            editor.putString("alamat",alamat);
+                            editor.putString("nama_toko",nama_toko);
+                            editor.putString("desc",desc);
                             editor.apply();
-                            startActivity(new Intent(TokoActivity.this, HalamanUtamaActivity.class));
+                            RegReq regReq = new RegReq(nama,nomer,email,user,alamat,password,nama_toko,desc);
+                            Intent intent = new Intent(TokoActivity.this, HalamanUtamaActivity.class);
+                            intent.putExtra("detailprofil",regReq);
+                            startActivity(intent);
                             finish();
                         }else{
                             Toast.makeText(TokoActivity.this, "Registrasi Gagal", Toast.LENGTH_SHORT).show();

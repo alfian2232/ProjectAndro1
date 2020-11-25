@@ -3,40 +3,41 @@ package com.example.asus.pict.Request;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class RegReq implements Parcelable {
-    String nama, nomer, email, user, alamat, password;
+import java.io.Serializable;
 
-    public RegReq(String nama, String nomer, String email, String user, String alamat, String password) {
+public class RegReq implements Serializable {
+    String nama, nomer, email, user, alamat, password,toko,des;
+
+    public RegReq(String nama, String nomer, String email, String user, String alamat, String password, String toko, String des) {
         this.nama = nama;
         this.nomer = nomer;
         this.email = email;
         this.user = user;
         this.alamat = alamat;
         this.password = password;
+        this.toko = toko;
+        this.des = des;
+    }
+    public RegReq() {
+    }
+
+    public String getToko() {
+        return toko;
+    }
+
+    public void setToko(String toko) {
+        this.toko = toko;
+    }
+
+    public String getDes() {
+        return des;
+    }
+
+    public void setDes(String des) {
+        this.des = des;
     }
 
     protected RegReq(Parcel in) {
-    }
-
-    public static final Creator<RegReq> CREATOR = new Creator<RegReq>() {
-        @Override
-        public RegReq createFromParcel(Parcel in) {
-            return new RegReq(in);
-        }
-
-        @Override
-        public RegReq[] newArray(int size) {
-            return new RegReq[size];
-        }
-    };
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
     }
 
     public String getNama() {
@@ -87,7 +88,4 @@ public class RegReq implements Parcelable {
         this.password = password;
     }
 
-    public static Creator<RegReq> getCREATOR() {
-        return CREATOR;
-    }
 }

@@ -9,7 +9,7 @@ import android.view.View;
 import com.example.asus.pict.R;
 
 public class HalamanUtamaActivity extends AppCompatActivity {
-
+    Intent intent;
     CardView cv_produk,cv_tambah,cv_pengaturan_akun;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +18,8 @@ public class HalamanUtamaActivity extends AppCompatActivity {
         cv_produk = findViewById(R.id.cv_produk);
         cv_tambah = findViewById(R.id.cv_tambah);
         cv_pengaturan_akun = findViewById(R.id.cv_pengaturan_akun);
+
+        intent = getIntent();
 
         cv_produk.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,7 +38,8 @@ public class HalamanUtamaActivity extends AppCompatActivity {
         cv_pengaturan_akun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HalamanUtamaActivity.this,PengaturanAkunActivity.class));
+                Intent intent1 = new Intent(HalamanUtamaActivity.this, PengaturanAkunActivity.class);
+                startActivity(intent1);
             }
         });
 

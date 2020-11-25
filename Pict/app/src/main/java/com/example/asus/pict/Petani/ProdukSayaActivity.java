@@ -72,7 +72,6 @@ public class ProdukSayaActivity extends AppCompatActivity {
                     rv_produk_saya.setLayoutManager(layoutManager);
                     produkPetaniAdapter = new ProdukPetaniAdapter(ProdukSayaActivity.this, ListProduk);
                     rv_produk_saya.setAdapter(produkPetaniAdapter);
-                    Toast.makeText(ProdukSayaActivity.this, "Berhasil", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(ProdukSayaActivity.this, "Gagal", Toast.LENGTH_SHORT).show();
                 }

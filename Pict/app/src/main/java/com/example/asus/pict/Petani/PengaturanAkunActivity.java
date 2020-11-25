@@ -13,7 +13,7 @@ import com.example.asus.pict.GetStartedFirst;
 import com.example.asus.pict.R;
 
 public class PengaturanAkunActivity extends AppCompatActivity {
-
+    Intent intent;
     CardView cv_profil,cv_kebijakan,cv_informasi;
     Button btn_keluar;
     @Override
@@ -24,6 +24,7 @@ public class PengaturanAkunActivity extends AppCompatActivity {
         cv_kebijakan = findViewById(R.id.cv_kebijakan);
         cv_informasi = findViewById(R.id.cv_info);
         btn_keluar = findViewById(R.id.btn_keluar);
+        intent=getIntent();
 
         cv_kebijakan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +44,21 @@ public class PengaturanAkunActivity extends AppCompatActivity {
                 editor.putBoolean("sudahLogin", false);
                 editor.apply();
                 startActivity(new Intent(PengaturanAkunActivity.this, GetStartedFirst.class));
+            }
+        });
+
+        cv_profil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(PengaturanAkunActivity.this, ProfilActivity.class);
+                startActivity(intent1);
+            }
+        });
+
+        cv_informasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(PengaturanAkunActivity.this,InformasiActivity.class));
             }
         });
 

@@ -124,7 +124,7 @@ public class UpdateProdukActivity extends AppCompatActivity {
                         public void onResponse(Call<AddProdukRes> call, Response<AddProdukRes> response) {
                             if(!response.body().getError()){
                                 Toast.makeText(UpdateProdukActivity.this, "Update Berhasil", Toast.LENGTH_SHORT).show();
-                                finish();
+                                startActivity(new Intent(UpdateProdukActivity.this,ProdukSayaActivity.class));
                             }else{
                                 Toast.makeText(UpdateProdukActivity.this, "Update Gagal", Toast.LENGTH_SHORT).show();
                             }
