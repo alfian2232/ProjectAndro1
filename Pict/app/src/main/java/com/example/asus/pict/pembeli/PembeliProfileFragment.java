@@ -14,12 +14,13 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.example.asus.pict.GetStartedFirst;
+import com.example.asus.pict.Petani.InformasiActivity;
 import com.example.asus.pict.Petani.KebijakanAppActivity;
 import com.example.asus.pict.R;
 
 public class PembeliProfileFragment extends Fragment {
     Button btn_logout;
-    LinearLayout btn_ubahprofil;
+    LinearLayout btn_ubahprofil,btn_informasi;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +38,7 @@ public class PembeliProfileFragment extends Fragment {
 
         btn_ubahprofil = view.findViewById(R.id.btn_ubah_profil);
         btn_logout = view.findViewById(R.id.btn_logout_pembeli);
+        btn_informasi = view.findViewById(R.id.btn_informasi);
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,6 +65,13 @@ public class PembeliProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(), KebijakanAppActivity.class));
+            }
+        });
+
+        btn_informasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), InformasiActivity.class));
             }
         });
 
