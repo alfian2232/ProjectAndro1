@@ -16,87 +16,63 @@
         android:padding="10dp"
         android:background="@color/white"
         android:orientation="vertical">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nama "
-                android:layout_alignParentStart="true"
-                android:fontFamily="@font/montserrat"/>
+                android:fontFamily="@font/montserrat_bold"
+                android:textSize="12sp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_nama"
-                android:layout_gravity="end"
                 android:text="Alfian Karim F"
-                android:layout_alignParentEnd="true"
                 android:fontFamily="@font/montserrat"/>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
                 android:text="Nomer "
                 android:layout_alignParentStart="true"
-                android:fontFamily="@font/montserrat"/>
+                android:fontFamily="@font/montserrat_bold"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_nomer"
-                android:layout_gravity="end"
                 android:text="Alfian Karim F"
                 android:layout_alignParentEnd="true"
                 android:fontFamily="@font/montserrat"/>
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
                 android:text="Alamat "
                 android:layout_alignParentStart="true"
-                android:fontFamily="@font/montserrat"/>
+                android:fontFamily="@font/montserrat_bold"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_alamat"
-                android:layout_gravity="end"
                 android:text="Alfian Karim F"
                 android:layout_alignParentEnd="true"
                 android:fontFamily="@font/montserrat"/>
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
                 android:text="Nama Toko "
                 android:layout_alignParentStart="true"
-                android:fontFamily="@font/montserrat"/>
+                android:fontFamily="@font/montserrat_bold"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_namatoko"
-                android:layout_gravity="end"
                 android:text="Alfian Karim F"
                 android:layout_alignParentEnd="true"
                 android:fontFamily="@font/montserrat"/>
-        </RelativeLayout>
     </LinearLayout>
 
 
