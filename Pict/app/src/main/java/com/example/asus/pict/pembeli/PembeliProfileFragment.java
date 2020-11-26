@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.example.asus.pict.GetStartedFirst;
+import com.example.asus.pict.Petani.KebijakanAppActivity;
 import com.example.asus.pict.R;
 
 public class PembeliProfileFragment extends Fragment {
@@ -61,7 +62,7 @@ public class PembeliProfileFragment extends Fragment {
         keb_app.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(),EtalaseActivity.class));
+                startActivity(new Intent(getContext(), KebijakanAppActivity.class));
             }
         });
 
