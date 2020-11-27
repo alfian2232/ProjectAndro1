@@ -52,7 +52,7 @@ public class ProdukPetaniAdapter extends RecyclerView.Adapter<ProdukPetaniAdapte
         final String nama_produk = jsonObject.get("nama_produk").getAsString();
         final int stok = jsonObject.get("stok").getAsInt();
         final float berat = jsonObject.get("berat").getAsFloat();
-        final float harga = jsonObject.get("harga").getAsFloat();
+        final int harga = jsonObject.get("harga").getAsInt();
         final String deskripsi = jsonObject.get("desc").getAsString();
         final String kategori = ListProduk.get(position).getKategori();
         final String image = ListProduk.get(position).getImg();
@@ -86,7 +86,7 @@ public class ProdukPetaniAdapter extends RecyclerView.Adapter<ProdukPetaniAdapte
     public class ProdukHolder extends RecyclerView.ViewHolder {
         ImageView iv_produk;
         TextView nama_produk,stok,kategori;
-        Button btn_hapus,btn_edit;
+        Button btn_edit;
 
         public ProdukHolder(View itemView) {
             super(itemView);
@@ -95,7 +95,6 @@ public class ProdukPetaniAdapter extends RecyclerView.Adapter<ProdukPetaniAdapte
             stok = itemView.findViewById(R.id.tv_stock);
             kategori = itemView.findViewById(R.id.tv_kategori);
             btn_edit = itemView.findViewById(R.id.btn_ubah);
-            btn_hapus = itemView.findViewById(R.id.btn_hapus);
         }
     }
 }

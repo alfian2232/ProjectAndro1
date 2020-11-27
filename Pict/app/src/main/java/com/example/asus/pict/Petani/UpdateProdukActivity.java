@@ -77,8 +77,8 @@ public class UpdateProdukActivity extends AppCompatActivity {
         Log.i("asfsadf",""+getIntent().getStringExtra("produk"));
         Glide.with(UpdateProdukActivity.this).load(getIntent().getStringExtra("image")).into(iv_produk);
         et_desc.setText(getIntent().getStringExtra("desc"));
-        et_harga.setText(""+getIntent().getFloatExtra("harga",0));
-        et_berat.setText(""+getIntent().getFloatExtra("harga",0));
+        et_harga.setText(""+getIntent().getIntExtra("harga",0));
+        et_berat.setText(""+getIntent().getFloatExtra("berat",0));
         et_stok.setText(""+getIntent().getIntExtra("stok",0));
         spin_kategori.setText(getIntent().getStringExtra("kategori"));
 
@@ -125,6 +125,7 @@ public class UpdateProdukActivity extends AppCompatActivity {
                             if(!response.body().getError()){
                                 Toast.makeText(UpdateProdukActivity.this, "Update Berhasil", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(UpdateProdukActivity.this,ProdukSayaActivity.class));
+                                finish();
                             }else{
                                 Toast.makeText(UpdateProdukActivity.this, "Update Gagal", Toast.LENGTH_SHORT).show();
                             }

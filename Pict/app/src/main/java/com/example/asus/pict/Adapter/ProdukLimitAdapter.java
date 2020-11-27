@@ -44,7 +44,7 @@ public class ProdukLimitAdapter extends RecyclerView.Adapter<ProdukLimitAdapter.
         JsonObject hasil = (JsonObject) jsonParser.parse(produk);
 
         holder.tv_nama.setText(hasil.get("nama_produk").getAsString());
-        holder.tv_harga.setText(hasil.get("harga").getAsString());
+        holder.tv_harga.setText("Rp "+hasil.get("harga").getAsString());
         Glide.with(context)
                 .load(produkLimitRes.getData().get(position).getImg())
                 .into(holder.iv_foto);

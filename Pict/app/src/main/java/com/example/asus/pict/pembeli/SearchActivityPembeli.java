@@ -78,7 +78,7 @@ public class SearchActivityPembeli extends AppCompatActivity {
                     JsonParser jsonParser = new JsonParser();
                     JsonObject hasil = (JsonObject) jsonParser.parse(data.getProduk());
                     String nama  = hasil.get("nama_produk").getAsString();
-                    if(nama.contains(nextText)){
+                    if(nama.toLowerCase().contains(nextText)){
                         searchResponse.add(data);
                         ListSearch.setData(searchResponse);
                     }

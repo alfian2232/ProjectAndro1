@@ -61,7 +61,8 @@ public class TambahProdukActivity extends AppCompatActivity {
     ImageView iv_produk;
     TextView tv_poto;
     String nama_produk,desc,kategori,image;
-    float harga,berat;
+    float berat;
+    Long harga;
     int stok;
     int id_petani;
     private File f = new File("");
@@ -91,6 +92,12 @@ public class TambahProdukActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
         btn_image.setOnClickListener(new View.OnClickListener() {
@@ -111,7 +118,7 @@ public class TambahProdukActivity extends AppCompatActivity {
                 nama_produk = et_produk.getText().toString();
                 desc = et_desc.getText().toString();
                 kategori = spin_kategori.getText().toString();
-                harga = Float.parseFloat(et_harga.getText().toString());
+                harga = Long.parseLong(et_harga.getText().toString());
                 berat = Float.parseFloat(et_berat.getText().toString());
                 stok = Integer.parseInt(et_stok.getText().toString());
 

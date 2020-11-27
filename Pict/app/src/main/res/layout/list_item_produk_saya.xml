@@ -37,11 +37,11 @@
             android:text="Stok : 1"
             android:id="@+id/tv_stock"
             android:fontFamily="@font/montserrat"
-            android:textSize="16sp"
+            android:textSize="13sp"
             app:layout_constraintStart_toEndOf="@id/iv_produk"
-            app:layout_constraintTop_toBottomOf="@id/tv_produk"
+            app:layout_constraintTop_toBottomOf="@id/tv_kategori"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="7dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -49,11 +49,11 @@
             android:id="@+id/tv_kategori"
             android:text="Kategori : Sayur Daun"
             android:fontFamily="@font/montserrat"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@id/tv_stock"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@id/iv_produk"
             app:layout_constraintTop_toBottomOf="@id/tv_produk"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="7dp"/>
 
         <Button
             android:layout_width="90dp"
@@ -65,23 +65,8 @@
             android:textSize="13sp"
             android:textColor="@color/list_row_end_color"
             android:layout_marginEnd="30dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_stock"
-            app:layout_constraintStart_toEndOf="@id/iv_produk"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"/>
-
-        <Button
-            android:layout_width="90dp"
-            android:layout_height="30dp"
-            android:id="@+id/btn_hapus"
-            android:background="@drawable/bg_button_ungu"
-            android:text="Hapus"
-            android:fontFamily="@font/montserrat_bold"
-            android:textSize="13sp"
-            android:textColor="@color/list_row_end_color"
-            android:layout_marginEnd="30dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_stock"
-            app:layout_constraintStart_toEndOf="@id/btn_ubah"
+            app:layout_constraintTop_toBottomOf="@id/tv_kategori"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"/>
 
