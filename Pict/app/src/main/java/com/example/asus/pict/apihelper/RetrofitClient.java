@@ -10,7 +10,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
     private static Retrofit retrofit = null;
-    public static final String BASE_URL_API = "https://vegetarianmarket.000webhostapp.com/api_kuliah/";
+//    public static final String BASE_URL_API = "https://vegetarianmarket.000webhostapp.com/api_kuliah/";
+    public static final String BASE_URL_API = "https://vegymarketuniska.000webhostapp.com/api_kuliah/";
 //    public static final String BASE_URL_API= "192.168.95.2/api_kuliah/";
 
     public static Retrofit getClient(){

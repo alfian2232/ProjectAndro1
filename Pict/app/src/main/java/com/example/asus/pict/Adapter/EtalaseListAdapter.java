@@ -80,6 +80,7 @@ public class EtalaseListAdapter extends RecyclerView.Adapter<EtalaseListAdapter.
                 bundle.putString("nomer", nomer);
                 intent.putExtras(bundle);
                 mCtx.startActivity(intent);
+                ((Activity)mCtx).finish();
             }
         });
     }

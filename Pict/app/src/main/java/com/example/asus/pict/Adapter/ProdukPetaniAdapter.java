@@ -1,5 +1,6 @@
 package com.example.asus.pict.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -74,6 +75,7 @@ public class ProdukPetaniAdapter extends RecyclerView.Adapter<ProdukPetaniAdapte
                 intent.putExtra("desc",deskripsi);
                 intent.putExtra("image",image);
                 mCtx.startActivity(intent);
+                ((Activity)mCtx).finish();
             }
         });
     }
