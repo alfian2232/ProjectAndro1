@@ -14,9 +14,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.asus.pict.R;
+import com.example.asus.pict.Request.RegReq;
 import com.example.asus.pict.Request.RegResponse;
+import com.example.asus.pict.Request.User;
 import com.example.asus.pict.apihelper.BaseApiService;
 import com.example.asus.pict.apihelper.RetrofitClient;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import java.io.Serializable;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -71,8 +77,15 @@ public class ActivityLogin extends AppCompatActivity {
                                 editor.putInt("id", response.body().getUid());
                                 editor.putString("role", "petani");
                                 editor.putBoolean("sudahLogin", true);
+                                editor.putString("nama",response.body().getUser().getNama());
+                                editor.putString("nomer",response.body().getUser().getNomer());
+                                editor.putString("alamat",response.body().getUser().getAlamat());
+                                JsonParser jsonParser = new JsonParser();
+                                JsonObject jsonObject = (JsonObject) jsonParser.parse(response.body().getUser().getToko());
+                                editor.putString("nama_toko",jsonObject.get("nama_toko").getAsString());
                                 editor.apply();
-                                startActivity(new Intent(ActivityLogin.this,HalamanUtamaActivity.class));
+                                Intent intent = new Intent(ActivityLogin.this,HalamanUtamaActivity.class);
+                                startActivity(intent);
                                 Toast.makeText(ActivityLogin.this, "Login Succes", Toast.LENGTH_SHORT).show();
                             }else{
                                 Toast.makeText(ActivityLogin.this, "Login gagal", Toast.LENGTH_SHORT).show();

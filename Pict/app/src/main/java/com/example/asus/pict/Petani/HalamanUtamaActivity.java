@@ -19,7 +19,6 @@ public class HalamanUtamaActivity extends AppCompatActivity {
         cv_tambah = findViewById(R.id.cv_tambah);
         cv_pengaturan_akun = findViewById(R.id.cv_pengaturan_akun);
 
-        intent = getIntent();
 
         cv_produk.setOnClickListener(new View.OnClickListener() {
             @Override

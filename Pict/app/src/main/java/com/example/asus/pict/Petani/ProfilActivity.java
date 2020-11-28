@@ -8,6 +8,9 @@ import android.widget.TextView;
 
 import com.example.asus.pict.R;
 import com.example.asus.pict.Request.RegReq;
+import com.example.asus.pict.Request.User;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 public class ProfilActivity extends AppCompatActivity {
     TextView tv_nama,tv_username,tv_email,tv_alamat,tv_nomer,tv_nama_toko;
@@ -23,12 +26,12 @@ public class ProfilActivity extends AppCompatActivity {
         tv_nama_toko = findViewById(R.id.tv_namatoko);
 
         sharedPreferences = getSharedPreferences("data_user", Context.MODE_PRIVATE);
+
+        User user = (User) getIntent().getSerializableExtra("user");
         String nama = sharedPreferences.getString("nama","");
         String nomer = sharedPreferences.getString("nomer", "");
         String alamat = sharedPreferences.getString("alamat", "");
         String nama_toko = sharedPreferences.getString("nama_toko", "");
-        String desc = sharedPreferences.getString("desc", "");
-
 
         tv_nama.setText(nama);
         tv_alamat.setText(alamat);

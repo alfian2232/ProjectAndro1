@@ -96,9 +96,7 @@ public class TokoActivity extends AppCompatActivity {
                             editor.putString("nama_toko",nama_toko);
                             editor.putString("desc",desc);
                             editor.apply();
-                            RegReq regReq = new RegReq(nama,nomer,email,user,alamat,password,nama_toko,desc);
-                            Intent intent = new Intent(TokoActivity.this, HalamanUtamaActivity.class);
-                            intent.putExtra("detailprofil",regReq);
+                            Intent intent = new Intent(TokoActivity.this, ActivityLogin.class);
                             startActivity(intent);
                             finish();
                         }else{

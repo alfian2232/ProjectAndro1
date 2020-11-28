@@ -24,7 +24,6 @@ public class PengaturanAkunActivity extends AppCompatActivity {
         cv_kebijakan = findViewById(R.id.cv_kebijakan);
         cv_informasi = findViewById(R.id.cv_info);
         btn_keluar = findViewById(R.id.btn_keluar);
-        intent=getIntent();
 
         cv_kebijakan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +43,7 @@ public class PengaturanAkunActivity extends AppCompatActivity {
                 editor.putBoolean("sudahLogin", false);
                 editor.apply();
                 startActivity(new Intent(PengaturanAkunActivity.this, GetStartedFirst.class));
+                finish();
             }
         });
 
